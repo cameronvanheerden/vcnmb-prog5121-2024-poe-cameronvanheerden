@@ -28,8 +28,20 @@ public class PROG5121_Part1 {
         //I am calling the create Username and create Password method within the main method
         createUsername();
         createPassword();
-        JOptionPane.showMessageDialog(null,"Welcome " + strfirstName + " " + strlastName + ", it is great to see you again!"
+        
+        boolean createUsername = true;//Boolean checks if the Username and password entered are correct and if they are correct it will display the welcome message
+        boolean createPassword = true;
+        
+        if(createUsername && createPassword){
+            JOptionPane.showMessageDialog(null,"Welcome " + strfirstName + " " + strlastName + ", it is great to see you again!"
                 , "Output", JOptionPane.PLAIN_MESSAGE); 
+        createUsername = false;
+        createPassword = false;
+        }
+        
+        else{
+        JOptionPane.showMessageDialog(null, "Username or password is incorrect please try again", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
     public static void createUsername(){
         boolean correctUsername = true;//Checks if the username entered is correct
@@ -67,7 +79,7 @@ public class PROG5121_Part1 {
            , "Password Requirements",JOptionPane.INFORMATION_MESSAGE);//Password requirements
            
     if(strPassword.length()>=8 && strPassword.matches(".*[A-Z].*") && strPassword.matches(".*[0-9].*")&&
-            strPassword.matches(".*[!,@,#,%,&,*,~,.,$].*$")) //If statement checks if password entered meets the requirements
+            strPassword.matches(".*[!,.,&,*,?,@,#,%,$].*")) //If statement checks if password entered meets the requirements
     {
     
         JOptionPane.showMessageDialog(null, "Password successfully captured", "Success", JOptionPane.PLAIN_MESSAGE);
