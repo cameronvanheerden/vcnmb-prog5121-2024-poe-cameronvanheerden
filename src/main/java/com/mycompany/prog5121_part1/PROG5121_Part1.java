@@ -89,7 +89,7 @@ public class PROG5121_Part1 {
     
     else{
     JOptionPane.showMessageDialog(null, "Password is not correctly formatted, please ensure that the password contains"
-            + "at least 8 characters, a capital letters, a number and a special character.", "Error", JOptionPane.ERROR_MESSAGE);
+            + " at least 8 characters, a capital letters, a number and a special character.", "Error", JOptionPane.ERROR_MESSAGE);
     
     }
       
