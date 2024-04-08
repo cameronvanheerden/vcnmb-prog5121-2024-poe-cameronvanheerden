@@ -32,14 +32,15 @@ public class PROG5121_Part1 {
         boolean createUsername = true;//Boolean checks if the Username and password entered are correct and if they are correct it will display the welcome message
         boolean createPassword = true;
         
-        if(createUsername && createPassword){
+        if(createUsername ==true && createPassword ==true ){
+            
             JOptionPane.showMessageDialog(null,"Welcome " + strfirstName + " " + strlastName + ", it is great to see you again!"
                 , "Output", JOptionPane.PLAIN_MESSAGE); 
         createUsername = false;
         createPassword = false;
         }
         
-        else{
+        else if (createUsername == false && createPassword == false){
         JOptionPane.showMessageDialog(null, "Username or password is incorrect please try again", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -91,8 +92,7 @@ public class PROG5121_Part1 {
             + "at least 8 characters, a capital letters, a number and a special character.", "Error", JOptionPane.ERROR_MESSAGE);
     
     }
-    
-    
+      
       }//end loop
     }
 }
