@@ -3,18 +3,21 @@ package com.mycompany.prog5121_part1;
 import javax.swing.JOptionPane;
 
 public class Login {
-   private String firstName;
+   private String firstName;//Declaring Necessary string variables
    private String lastName;
    private String Username;
    private String Password;
+   private String Registration;
    
-   private int UserResponse;
+   private int UserResponse;//Declaring Necessary integar variable
    
-   private boolean validPassword;
+   private boolean validPassword; //Declaring Necessary boolean variables
    private boolean validUsername;
+   private boolean verifyLogin;
+   
    
    public void fullName(){
-       
+   //Before creating the Registration feature allow the user to enter their first name and surname 
    firstName = JOptionPane.showInputDialog(null, "Enter your first name: ");
    lastName = JOptionPane.showInputDialog(null, "Enter your last name: ");
         
@@ -55,7 +58,7 @@ public class Login {
     
     if(Username.contains("_")&& Username.length()<=5 ){
     
-    JOptionPane.showMessageDialog(null, "Username captured successfully.", " Success", JOptionPane.PLAIN_MESSAGE);
+    JOptionPane.showMessageDialog(null, "Username captured successfully.", "Username successfully created", JOptionPane.PLAIN_MESSAGE);
      
     validUsername = false;   
     }
@@ -83,7 +86,7 @@ public class Login {
             Password.matches(".*[!,.,&,*,?,@,#,%,$].*")) //If statement checks if password entered meets the requirements
     {
     
-        JOptionPane.showMessageDialog(null, "Password successfully captured", "Success", JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Password successfully captured", "Password successfully created", JOptionPane.PLAIN_MESSAGE);
     validPassword = false;
     }
     
@@ -97,9 +100,36 @@ public class Login {
     }
     
     public String registerUser(){ 
-
-    
-        
-    
+                
+    if(validPassword && validUsername){//This if statement checks if the username and password are valid
+        JOptionPane.showMessageDialog(null, "The user has successfully been registered.", "Registered", JOptionPane.PLAIN_MESSAGE);
+        Registration = "Success";//If true this is the registration status
     }
+    else{
+        JOptionPane.showMessageDialog(null, "The username has been incorrectly formatted or"
+                + "The password did not meet the complexity requirements.", "Error", JOptionPane.ERROR_MESSAGE);
+        Registration = "Error";//If false this is the registration status
+        }
+      
+        return Registration;//This return function returns the registration status 
+    }
+  
+    public boolean loginUser(String inputUsername, String inputPassword){
+     if(inputUsername.equals(Username) && inputPassword.equals(Password)){ //This if statement ensures that the login details entered matches the login in detauls stored when the user re
+         JOptionPane.showMessageDialog(null, "Login details entered are correct", "Login successful", JOptionPane.PLAIN_MESSAGE);
+     
+      return true;//If login status matches it returns a true
+     }
+     else{
+         JOptionPane.showMessageDialog(null, "Login details are incorrect", "Error", JOptionPane.ERROR_MESSAGE);
+        
+     return false;//If login status doesnt match it returns a false
+     }
+    
+  }
+    
+    public String returnLoginStatus(){
+   
+    }
+    
 }
