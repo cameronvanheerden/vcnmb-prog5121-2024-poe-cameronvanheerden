@@ -3,72 +3,23 @@ package com.mycompany.prog5121_part1;
 import javax.swing.JOptionPane;
 
 public class Login {
-   private String firstName;//Declaring Necessary string variables
-   private String lastName;
    private String Username;
    private String Password;
    private String Registration;
-   
-   private int UserResponse;//Declaring Necessary integar variable
    
    private boolean validPassword; //Declaring Necessary boolean variables
    private boolean validUsername;
    private boolean verifyLogin;
    
-   
-   public void fullName(){
-   //Before creating the Registration feature allow the user to enter their first name and surname 
-   firstName = JOptionPane.showInputDialog(null, "Enter your first name: ");
-   lastName = JOptionPane.showInputDialog(null, "Enter your last name: ");
-        
-   }
-   
-   public int accountCreation(int iUserInput){
-    UserResponse = iUserInput;
-    
-    iUserInput = JOptionPane.showConfirmDialog(null, "Would you like to create an account?" , "Confirm account creation",
-                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);//Allow user to choose whether they want to create an account or not
-        
-    if(iUserInput == JOptionPane.YES_OPTION){
-        
-    JOptionPane.showMessageDialog(null, "You may proceed to create an account.", "Output", JOptionPane.PLAIN_MESSAGE);
-        //If they select yes they may proceed with creating the username and the password
-        
-        
-    }
-    else if(iUserInput == JOptionPane.NO_OPTION)
-    {
-            
-    JOptionPane.showMessageDialog(null, "Thank you for using my app.", "Output", JOptionPane.ERROR);
-        //If they select no thank the user for using my app
-      
-   }
-    return UserResponse;
-   }
-   
     public boolean checkUserName(){
    
-    validUsername=true;
-    
-    while(validUsername == true){
+    validUsername= false;
         
-    Username = JOptionPane.showInputDialog(null, "Create a username"
-            + "\n-The username must contain an underscore \n-Should not be longer than 5 characters.",
-            "Username Requirements", JOptionPane.INFORMATION_MESSAGE);
-    
     if(Username.contains("_")&& Username.length()<=5 ){
     
-    JOptionPane.showMessageDialog(null, "Username captured successfully.", "Username successfully created", JOptionPane.PLAIN_MESSAGE);
-     
-    validUsername = false;   
-    }
-    else{
-    JOptionPane.showMessageDialog(null, "Username is not correctly formatted, please ensure that your username contains an underscore"
-            + " and is no more than 5 character in length", "Error", JOptionPane.ERROR_MESSAGE);
-    }    
-       
-}
-     return validUsername;  
+    validUsername = true;
+    } 
+    return validUsername;  
 }    
 
     public boolean checkPasswordComplexity(){
@@ -129,7 +80,7 @@ public class Login {
   }
     
     public String returnLoginStatus(){
-   
+        
     }
     
 }
