@@ -14,70 +14,131 @@ public class PROG5121_Part1 {
      Name(); //Calling this method within the main method
      createUsername();
      createPassword();
-     
+     successfulLogin(); 
      }
       else if(iUserResponse == JOptionPane.NO_OPTION)
      {
             
      JOptionPane.showMessageDialog(null, "Thank you for using my app.", "Output", JOptionPane.PLAIN_MESSAGE);
       //If they select no thank the user for using my app
-        
-      System.exit(iUserResponse);//Exits the program without continuing 
+           
+      System.exit(iUserResponse);//Exits the program without continuing
       
       }
      
     }
      public static void Name(){
-         String firstName;
-         String lastName;
+         String firstName = ""; 
+         String lastName = "";
          
+         while(firstName.isEmpty() || lastName.isEmpty()){
          firstName = JOptionPane.showInputDialog(null, "Enter your first name: ");
          lastName = JOptionPane.showInputDialog(null, "Enter your last name: ");
-       
+         
+         if(firstName.isBlank()|| lastName.isBlank()){
+             JOptionPane.showMessageDialog(null, "First name and Last name is required",
+                     "Retry", JOptionPane.ERROR_MESSAGE);     
+         }
     }
+   }
      
     public static void createUsername(){
     String Username1;
     String Password1 = "";
-                       
+    boolean correctUsername = false; 
+                               
     Username1 = JOptionPane.showInputDialog(null, "Create a username"
                 + "\n-The username must contain an underscore \n-Should not be longer than 5 characters.",
                 "Username Requirements", JOptionPane.INFORMATION_MESSAGE);
      
-     Login validUsername = new Login (Username1, Password1);
-          
+     Login validUsername = new Login ();
+     
+     while(!correctUsername) {       
      if(validUsername.checkUserName(Username1)==true){
-     JOptionPane.showMessageDialog(null, "Username successfully captured", "Username valid", JOptionPane.PLAIN_MESSAGE);
+         
+     JOptionPane.showMessageDialog(null, validUsername.registerUser(),
+             "Username valid", JOptionPane.PLAIN_MESSAGE);
+     
+     correctUsername = true;
      }
-     else if(validUsername.checkUserName(Username1)==false){
-     JOptionPane.showMessageDialog(null, "Username is not correctly formatted, please ensure that "
-             + "your username contains an underscore and is no more than 5 characters in length.",
+    
+     else{
+     JOptionPane.showMessageDialog(null, validUsername.registerUser(),
              "Username not valid", JOptionPane.ERROR_MESSAGE);
+     
+     Username1 = JOptionPane.showInputDialog(null, "Create a username"
+                + "\n-The username must contain an underscore \n-Should not be longer than 5 characters.",
+                "Username Requirements", JOptionPane.INFORMATION_MESSAGE);
+    
+     validUsername.checkUserName(Username1);
      }
     }
-          
+   }        
+     
     public static void createPassword(){
         
-        String Username2 = "";
-        String Password2;
+        String Username1 = "";
+        String Password1;
+        boolean correctPassword = false;
                     
-     Password2 = JOptionPane.showInputDialog(null, "Create a password"
+     Password1 = JOptionPane.showInputDialog(null, "Create a password"
            + "\n-Must be at least 8 Characters long"
            + "\n-Contain a capital letter"
            + "\n-Contain a number"
            + "\n-Contain a special character"
            , "Password Requirements",JOptionPane.INFORMATION_MESSAGE);//Password requirements
      
-    Login validPassword =  new Login(Username2, Password2);
-             
-     if(validPassword.checkPasswordComplexity(Password2)==true){
-     JOptionPane.showMessageDialog(null, "Password successfully captured", "Password valid", JOptionPane.PLAIN_MESSAGE);
-     
+    Login validPassword =  new Login();
+    
+     while(!correctPassword){       
+         
+     if(validPassword.checkPasswordComplexity(Password1)==true){
+     JOptionPane.showMessageDialog(null, validPassword.registerUser(), 
+             "Password valid", JOptionPane.PLAIN_MESSAGE);
+
+    correctPassword = true;
      }
-     else if(validPassword.checkPasswordComplexity(Password2)==false){
-      JOptionPane.showMessageDialog(null, "Password is not correctly formatted, please ensure that the password"
-              + " contains at least 8 characters, a capital letter, a number and a special character.", "Password not valid", JOptionPane.ERROR_MESSAGE);
+     else{
+      JOptionPane.showMessageDialog(null, validPassword.registerUser(), 
+              "Password not valid", JOptionPane.ERROR_MESSAGE);
+      
+      Password1 = JOptionPane.showInputDialog(null, "Create a password"
+           + "\n-Must be at least 8 Characters long"
+           + "\n-Contain a capital letter"
+           + "\n-Contain a number"
+           + "\n-Contain a special character"
+           , "Password Requirements",JOptionPane.INFORMATION_MESSAGE);//Password requirements
+      
+      validPassword.checkPasswordComplexity(Password1);
          
      }     
+   }
+    }
+    
+    public static void successfulLogin(){
+        String Username1 = "";
+        String Password1 = ""; 
+        
+        Login Registered = new Login(); 
+        
+        if(Registered.loginUser(Username1, Password1)){
+            
+        JOptionPane.showMessageDialog(null, Registered.registerUser(), 
+                "Account created successfully", JOptionPane.PLAIN_MESSAGE);
+        }
+        
 }
+    
+    /*public static void LoginStatus(){
+        
+        Login Status = new Login ();
+        if()
+        {
+            JOptionPane.showMessageDialog(null, Status.returnLoginStatus(), "Successfully logged in", 0);
+        }
+    
+        else {
+            
+}
+}*/
 }

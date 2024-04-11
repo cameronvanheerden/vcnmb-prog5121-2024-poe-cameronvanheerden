@@ -1,20 +1,26 @@
 package com.mycompany.prog5121_part1;
 
 public class Login {
-   private String Username1;//Declaring the necessary String variables
-   private String Password1;
+   private final String Username1;//Declaring the necessary String variables
+   private final String Password1;
    private String Registration;
+   private String strUsername;
+   private String strPassword;
+   private String Name;
+   private String Surname;
+   private final String firstName1;
+   private final String lastName1;
    
    private boolean validPassword; //Declaring Necessary boolean variables
    private boolean validUsername;
-   private String strUsername;
-   private String strPassword;
+   
+    public Login(){
     
-    public Login(String Username, String Password){
-    
+    this.firstName1 = Name;
+    this.lastName1 = Surname;
     this.Username1 = strUsername;   
     this.Password1 = strPassword;
-    
+   
     }
    
      public boolean checkUserName(String strUsername){
@@ -39,23 +45,31 @@ public class Login {
     return validPassword;
     }
     
-    public String registerUser(){   
+    public String registerUser(){  
         
-    if(validPassword && validUsername){//This if statement checks if the username and password are valid
-     return "The User has been registered successfully";
+      if(validUsername){
+          
+       return "Username successfully captured";   
+      }
+      
+      else if(!validUsername){
+       return """
+              The username has been incorrectly formatted, please ensure that your Username has the following criteria: 
+              -The username should contain an underscore
+              -And it should not be longer than 5 characters""";//If the username is not correct it will return this statement
+    }
+      else if(validPassword){
+          
+       return "Password successfully captured";   
+      }
         
-    }
-    else if(validUsername == false && validPassword == false){
-    return "The username has been incorrectly formatted and "
-            + "The password does not meet the complexity requirements";//If both conditions are not met this statement will return
-    
-    }
-    else if(validUsername == false)
-            {
-       return "The username has been incorrectly formatted";//If the username is not correct it will return this statement
-    }
-    else if(validPassword == false){
-    return "The password does not meet the complexity requirements";//If the password is not correct it will return this statement
+    else if(!validPassword){
+    return """
+           The password is not correctly formatted, please ensure that your password has the following criteria: 
+           -The password should contain at least 8 characters
+           -A capital letter
+           -A number
+           -And a special character""";//If the password is not correct it will return this statement
       
     }
      else{ 
@@ -64,23 +78,18 @@ public class Login {
     }  
  
     public boolean loginUser(String Username, String Password){
-     if(Username.equals(strUsername) && Password.equals(strPassword)){ //This if statement ensures that the login details entered matches the login in detauls stored when the user re
-          
-      return true;//If login status matches it returns a true
-     }
-     else{
-         
-     return false;//If login status doesnt match it returns a false
-     }
+       return Username.equals(strUsername) && Password.equals(strPassword); //This if statement ensures that the login details entered matches the login in detauls stored when the user re
+       //If login status matches it returns a true
+       //If login status doesnt match it returns a false
     
   }
        
-    public String returnLoginStatus(){
-     if(validPassword && validUsername){//This if statement checks if the information that the user gave is correct
-     return "Login Successful";//this statement will return if the login is correct
+    public String returnLoginStatus(boolean Username, boolean Password){
+     if(validPassword == true && validUsername == true){//This if statement checks if the information that the user gave is correct
+     return "Welcome " + Name + " " + Surname + " ,it is great to see you again.";//this statement will return if the login is correct
      }
      else{
-         return "Login failed";//If the login in is incorrect it will print this statement
+         return "Username or password is incorrect, please try again";//If the login in is incorrect it will print this statement
      }  
     }
     
