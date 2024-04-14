@@ -8,16 +8,14 @@ public class Login {
    private String strPassword;
    private String strName;
    private String strSurname;
-   private boolean validPassword;
-   private boolean validUsername;
    private boolean Registration;
 
     public Login(String Username1, String Password1, String strName, String strSurname) {
         
         this.strName = strName;
         this.strSurname = strSurname;
-        this.Username1 = strUsername;
-        this.Password1 = strPassword;
+        this.Username1 = Username1;
+        this.Password1 = Password1;
         Registration = false;
     }
 
@@ -41,7 +39,30 @@ public class Login {
         return strSurname;
     
     }
+    
+    public void setUsername(){
 
+        this.Username1 = strUsername;
+
+}
+    
+    public String getUsername(){
+         
+        return strUsername;
+        
+    }
+    
+    public void setPassword(){
+        
+        this.Password1 = strPassword;
+        
+    }
+    
+    public String getPassword(){
+        
+        return strPassword;
+    }
+    
      public boolean checkUserName(String strUsername){
        
     if(strUsername.contains("_")&& strUsername.length()<=5 ){//The condition states that the username has to have an underscore and is not more than 5 characters long
@@ -66,37 +87,46 @@ public class Login {
    }
    
    public String registerUser(){ 
-       
+       boolean validUsername = checkUserName(strUsername);
+       boolean validPassword = checkPasswordComplexity(strPassword);
       
-     if(){
-         
-     }
-         
-         
+     if(!validUsername && !validPassword){
+        return "Username is incorrectly formatted and Password doesn't meet complexity requirements";
+        
+    }else if(!validUsername){
+        
+        return "Username is incorrectly formatted";
+        
+    } else if(!validPassword) {
+        
+        return "Password doesn't meet complexity requirements";
+        
+    } else{
+ 
+        return "User registered successfully";
+    }
        
 }
 
 
  
-    public boolean loginUser(String Username, String Password){
-       if(Username.equals(this.Username1) && Password.equals(this.Password1)){; //This if statement ensures that the login details entered matches the login in detauls stored when the user re
-      
-       return true;
-       }
-       else{
-             return false;  
-       }
-    
+   public boolean loginUser() {
        
-  }
+    if (this.Username1.equals(Username1) && this.Password1.equals(Password1)) 
+    {
+        return true; 
+        
+    } else {
+        
+        return false;
+    }
+}
     
     
     public String returnLoginStatus(String Username1, String Password1){
-     if (Username1.equals(this.strUsername) && Password1.equals(this.Password1)) {
+     if (Username1.equals(this.Username1) && Password1.equals(this.Password1)) {
         return "Welcome ";
         }
-     else{
-         return "Username or password is incorrect, please try again";
-        }
+     return "Failed login";
     }
 }

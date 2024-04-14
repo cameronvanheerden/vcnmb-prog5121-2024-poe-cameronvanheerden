@@ -18,7 +18,7 @@ public class PROG5121_Part1 {
        String Password1 = "";
        createPassword(Password1); 
        successfulLogin(Username1, Password1, firstName1, lastName1);
-       LoginStatus(Username1, Password1, firstName1, lastName1);
+       returnMessage(Username1, Password1, firstName1, lastName1);
 
     }
     else if(iUserResponse == JOptionPane.NO_OPTION)
@@ -120,6 +120,7 @@ public class PROG5121_Part1 {
     }
     
     public static void successfulLogin(String Username1, String Password1, String firstName1, String lastName1) {
+       
         Login Registered = new Login(Username1, Password1, firstName1, lastName1);
         
         int Login = JOptionPane.showConfirmDialog(null, "Would you like to sign into your account", "Confirm",
@@ -128,31 +129,35 @@ public class PROG5121_Part1 {
          if(Login==JOptionPane.YES_OPTION){
         Username1 = JOptionPane.showInputDialog(null, "Enter your username:", "Login", JOptionPane.PLAIN_MESSAGE);
         Password1 =JOptionPane.showInputDialog(null, "Enter your password:", "Login", JOptionPane.PLAIN_MESSAGE);
-        
-        if(Registered.loginUser(Username1, Password1)){
-            
-         JOptionPane.showMessageDialog(null, Registered.registerUser(), "Login valid", JOptionPane.PLAIN_MESSAGE);      
-        } 
-        else{       
-         
-         JOptionPane.showMessageDialog(null, Registered.registerUser(), "Failed", JOptionPane.ERROR_MESSAGE);
-        }      
+                
+          if (Registered.loginUser()) {
+                JOptionPane.showMessageDialog(null, "Login successful", "Logged in", JOptionPane.PLAIN_MESSAGE);
+            } else {
+              
+              JOptionPane.showMessageDialog(null, "Invalid username or password", "Error", JOptionPane.ERROR_MESSAGE);
+          }
+             
+          
+        } else if (Login == JOptionPane.NO_OPTION) {
+            JOptionPane.showMessageDialog(null, "Goodbye!", "Output", JOptionPane.PLAIN_MESSAGE);
+            System.exit(Login);
+        }       
     }
-        else if(Login==JOptionPane.NO_OPTION);{
-        JOptionPane.showMessageDialog(null, "Goodbye!", "Output", JOptionPane.PLAIN_MESSAGE);
-        
-        System.exit(Login);
-    }
-}
-
     
-    public static void LoginStatus(String Username1, String Password1, String firstName1, String lastName1) {
-        Login Status = new Login(Username1, Password1, firstName1, lastName1);
-   
-      String statusMessage= Status.returnLoginStatus(Username1, Password1);
-      
-      JOptionPane.showMessageDialog(null, statusMessage + Status.getFirstName() + " " + Status.getLastName()+ ", great to see you again!"
-               ,"Welcome", JOptionPane.PLAIN_MESSAGE);
-        
-}
+    public static void returnMessage(String Username1, String Password1, String firstName1, String lastName1){
+       Login Return1 = new Login(Username1, Password1, firstName1, lastName1);
+       
+       firstName1 = Return1.getFirstName();
+       lastName1 = Return1.getLastName();
+       
+    
+        if(Return1.loginUser()){
+        JOptionPane.showMessageDialog(null, Return1.returnLoginStatus(Username1, Password1) + firstName1 + " " + lastName1 + ", great to see you again", "Successful login", JOptionPane.PLAIN_MESSAGE);
+    
+        }  
+        else{
+            JOptionPane.showMessageDialog(null, Return1.returnLoginStatus(Username1, Password1), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
 }
