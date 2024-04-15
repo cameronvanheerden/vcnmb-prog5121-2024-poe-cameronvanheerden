@@ -46,16 +46,8 @@ public class Login {
        boolean validUsername = checkUserName(strUsername);
        boolean validPassword = checkPasswordComplexity(strPassword);
       
-     if(!validUsername && !validPassword){
-        return "Username is incorrectly formatted and Password doesn't meet complexity requirements";
-        
-    }else if(!validUsername){
-        
-        return "Username is incorrectly formatted";
-        
-    } else if(!validPassword) {
-        
-        return "Password doesn't meet complexity requirements";
+     if(!validUsername || !validPassword){
+        return "Username is incorrectly formatted or Password doesn't meet complexity requirements";
         
     } else{
  
