@@ -18,50 +18,6 @@ public class Login {
         this.Password1 = Password1;
         Registration = false;
     }
-
-     public void setfirstName(String strName) {
-         
-        this.strName = strName;
-    }
-
-    public void setlastName(String strSurname) {
-        
-        this.strSurname = strSurname;
-    }
-    
-    public String getFirstName(){
-      
-        return strName;
-    }
-    
-    public String getLastName(){
-    
-        return strSurname;
-    
-    }
-    
-    public void setUsername(){
-
-        this.Username1 = strUsername;
-
-}
-    
-    public String getUsername(){
-         
-        return strUsername;
-        
-    }
-    
-    public void setPassword(){
-        
-        this.Password1 = strPassword;
-        
-    }
-    
-    public String getPassword(){
-        
-        return strPassword;
-    }
     
      public boolean checkUserName(String strUsername){
        
@@ -86,7 +42,7 @@ public class Login {
     }
    }
    
-   public String registerUser(){ 
+   public String registerUser(String Username1, String Password1){ 
        boolean validUsername = checkUserName(strUsername);
        boolean validPassword = checkPasswordComplexity(strPassword);
       
@@ -110,16 +66,12 @@ public class Login {
 
 
  
-   public boolean loginUser() {
-       
-    if (this.Username1.equals(Username1) && this.Password1.equals(Password1)) 
-    {
-        return true; 
-        
-    } else {
-        
-        return false;
-    }
+   public boolean loginUser(String Username1, String Password1) {
+       if(this.Username1.equals(Username1) && this.Password1.equals(Password1)){
+           
+           return true;
+       }
+       return false;
 }
     
     
@@ -129,4 +81,6 @@ public class Login {
         }
      return "Failed login";
     }
+
+  
 }
