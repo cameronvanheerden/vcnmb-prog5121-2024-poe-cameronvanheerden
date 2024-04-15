@@ -15,17 +15,21 @@ public class PROG5121_Part1 {
         String lastName1 = "";
         String Username1 = "";
         String Password1 = "";
-               
-        while(firstName1.isEmpty() || lastName1.isEmpty()){//loops if the name and surname is empty(GeeksforGeeks, 2023)
-         firstName1 = JOptionPane.showInputDialog(null, "Enter your first name: ");//(Marilena, 2016)
-         lastName1 = JOptionPane.showInputDialog(null, "Enter your last name: ");//(Marilena, 2016)
-         
-         }
-         
-        if(firstName1.isBlank()|| lastName1.isBlank()){//(GeeksforGeeks, 2023)
-             JOptionPane.showMessageDialog(null, "First name and Last name is required",
-                     "Retry", JOptionPane.ERROR_MESSAGE);//If the first or last name is blank it will loop back for user to enter it again(GeeksforGeeks, 2021)
-         }
+        boolean Registration = false; 
+        
+        
+        while(firstName1.isEmpty() || lastName1.isEmpty()){//If the last name and surname is not entered it will tell the user to enter it again(GeeksforGeeks, 2023)
+            
+            firstName1 = JOptionPane.showInputDialog(null, "Enter your first name: ");
+            lastName1 = JOptionPane.showInputDialog(null, "Enter your last name: ");
+
+            if (firstName1.isBlank() || lastName1.isBlank()) {
+                JOptionPane.showMessageDialog(null, "First name and Last name is required",
+                        "Retry", JOptionPane.ERROR_MESSAGE);
+            }
+     
+           }
+      
        boolean validUsername = false;//Default variable for username is false
            
        while(!validUsername){//While loop continues until username requirements have been me(Wanvig, 2021)
@@ -39,7 +43,8 @@ public class PROG5121_Part1 {
        
         if(validUsername1.checkUserName(Username1)){
             
-            JOptionPane.showMessageDialog(null, "Username captured successfully", "Username valid", JOptionPane.PLAIN_MESSAGE);//(GeeksforGeeks, 2021)
+            JOptionPane.showMessageDialog(null, "Username captured successfully",
+                    "Username valid", JOptionPane.PLAIN_MESSAGE);//(GeeksforGeeks, 2021)
             
             validUsername= true;//Boolean variable that is true when the username is meets requirements and while loop will end
     }else{
@@ -125,7 +130,8 @@ public class PROG5121_Part1 {
             System.exit(Login); //If user selects no it doesnt allow them to login in
         
     }
-     else if(iUserResponse == JOptionPane.NO_OPTION)//If user selects no it exits the program(Stackoverflow, 2014)
+    }
+      else if(iUserResponse == JOptionPane.NO_OPTION)//If user selects no it exits the program(Stackoverflow, 2014)
     {
             
      JOptionPane.showMessageDialog(null, "Thank you for using my app.", "Output", JOptionPane.PLAIN_MESSAGE);
@@ -134,7 +140,6 @@ public class PROG5121_Part1 {
       System.exit(iUserResponse);//Exits the program without continuing and displays a message saying thank you(Stackoverflow, 2014)
       
     }  
-    }
 }
 }
 

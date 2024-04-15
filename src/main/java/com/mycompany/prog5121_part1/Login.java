@@ -1,14 +1,14 @@
 package com.mycompany.prog5121_part1;
 
 public class Login {
-   // Declaring the necessary String variables 
-   private String Username1;//Declaring the necessary String variables
-   private String Password1;
-   private String strUsername;
-   private String strPassword;
-   private String strName;
-   private String strSurname;
-   private boolean Registration;
+       // Declaring the necessary String variables 
+       private String Username1;//Declaring the necessary String variables
+       private String Password1;
+       private String strUsername;
+       private String strPassword;
+       private String strName;
+       private String strSurname;
+       private boolean Registration;
 
     public Login(String Username1, String Password1, String strName, String strSurname) {//Constructor for login class(GeeksforGeeks, 2024)
         

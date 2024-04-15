@@ -72,6 +72,7 @@ public class PROG_Part1_UnitTesting {
        Assertions.assertEquals(true, Actual);//(Wanvig, 2022)
        
    }
+   @Test
    public void testUsernamefalse(){//Test to see if username requirements are false
        Login test7 = new Login("","","","");//(Wanvig, 2022)
        boolean Actual = test7.checkUserName("kyle!!!!!!!");//(Wanvig, 2022)
@@ -81,7 +82,7 @@ public class PROG_Part1_UnitTesting {
        
        
    }
-   
+   @Test
    public void testPasswordtrue(){//Test to see if password requirements are met
    Login test8 = new Login("","","","");//(Wanvig, 2022)
        boolean Actual = test8.checkPasswordComplexity("Ch&&sec@ke99!");//v
