@@ -88,3 +88,35 @@ public class Login {
 
   
 }
+/*References
+Dexter, M., 2007. Eclipse And Java For Total Beginners. [Online] 
+Available at: https://eclipsetutorial.sourceforge.net/Total_Beginner_Companion_Document.pdf
+[Accessed 12 April 2024].
+GeeksforGeeks, 2021. Message Dialogs in Java (GUI). [Online] 
+Available at: https://www.geeksforgeeks.org/message-dialogs-java-gui/
+[Accessed 14 April 2024].
+GeeksforGeeks, 2023. Java String isEmpty() method with example. [Online] 
+Available at: https://www.geeksforgeeks.org/java-string-isempty-method-example/
+[Accessed 13 April 2024].
+GeeksforGeeks, 2024. Java Cheat Sheet. [Online] 
+Available at: https://www.geeksforgeeks.org/java-cheat-sheet/
+[Accessed 12 April 2024].
+Javatpoint, 2021. What is an Instance in Java?. [Online] 
+Available at: https://www.javatpoint.com/what-is-an-instance-in-java
+[Accessed 14 April 2024].
+Marilena, 2016. Java Swing – JOptionPane showConfirmDialog example. [Online] 
+Available at: https://mkyong.com/swing/java-swing-how-to-make-a-confirmation-dialog/
+[Accessed 13 April 2024].
+Marilena, 2016. Java Swing – JOptionPane showInputDialog example. [Online] 
+Available at: https://mkyong.com/swing/java-swing-joptionpane-showinputdialog-example/
+[Accessed 14 April 2024].
+Stackoverflow, 2014. confirmation before exit dialog. [Online] 
+Available at: https://stackoverflow.com/questions/17143394/confirmation-before-exit-dialog
+[Accessed 15 April 2024].
+Stackoverflow, 2016. Password validate 8 digits, contains upper, lowercase, and a special character. [Online] 
+Available at: https://stackoverflow.com/questions/36097097/password-validate-8-digits-contains-upper-lowercase-and-a-special-character
+[Accessed 13 April 2024].
+Wanvig, R., 2021. PROG5121 LU3 IF statement Examples, Port Elizabeth: Varsity College.
+Wanvig, R., 2021. PROG5121 LU4 While loops intro, Port Elizabeth: Varsity College.
+Wanvig, R., 2022. Basic Unit testing example, Port Elizabeth: Varsity College.*/
+
