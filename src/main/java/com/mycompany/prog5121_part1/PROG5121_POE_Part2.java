@@ -5,10 +5,7 @@ import javax.swing.JOptionPane;
 public class PROG5121_POE_Part2 {
        static String firstName = "";
        static String lastName = "";
-       static String menuMessage = "Please select an option:\n"
-                               + "1.) Add Tasks\n"
-                               + "2.) Show Report\n"
-                               + "3.) Quit\n";
+       static int numericMenu;
        
     public static void main(String[] args) {
         
@@ -17,10 +14,8 @@ public class PROG5121_POE_Part2 {
         JOptionPane.showMessageDialog(null, "Welcome, "+ firstName + " " + lastName+ ", to the adding Tasks feature!" , 
                 "Task feature", JOptionPane.PLAIN_MESSAGE);
         displayMenu();
-        
-        
-    }
     
+    }
     private static void displayWelcome(){
         
        JOptionPane.showMessageDialog(null, "Welcome to EasyKanban.", "Welcome", JOptionPane.PLAIN_MESSAGE); 
@@ -41,19 +36,12 @@ public class PROG5121_POE_Part2 {
         }   
     }
     
+    
     private static int displayMenu(){
+       String[] options = {"Add Task", "Show Report", "Quit"};
         
-        String Menu = JOptionPane.showInputDialog(null, menuMessage, "Main Menu", JOptionPane.INFORMATION_MESSAGE);
+       return JOptionPane.showOptionDialog(null, "Please select an option:", "Main Menu",
+                   JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]) +1;
         
-        if(Menu==null){
-            
-            return 3;
-         }
-        
-       return Integer.parseInt(Menu);
-    }
-    
-    
-    
 }
-
+}
