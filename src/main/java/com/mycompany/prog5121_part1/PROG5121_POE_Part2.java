@@ -9,7 +9,7 @@ public class PROG5121_POE_Part2 {
        static int numTask;
        static String taskName="";
        static String taskDescription="";
-       static String developerDetails = "";
+       static String developerName = "";
        static int taskDuration;
        static String taskID ="";
        static String options[] = {"Add Task", "Show Report", "Quit"};
@@ -88,8 +88,10 @@ public class PROG5121_POE_Part2 {
     
     private static void createTask(){
         
-         Task createTask = new Task(taskName, numTask, developerDetails);
+         Task createTask = new Task(taskName, numTask, developerName, taskDescription, taskDuration, "", choice);
         
+        taskName=JOptionPane.showInputDialog(null, "Enter your task name:", "Task Name", JOptionPane.PLAIN_MESSAGE); 
+         
         do{
             taskDescription = JOptionPane.showInputDialog(null, "Enter a short description of the task (Max 50 characters): ", 
                 "Task Description", JOptionPane.PLAIN_MESSAGE);
@@ -109,15 +111,15 @@ public class PROG5121_POE_Part2 {
         }
         while(!createTask.checkTaskDescription(taskDescription));
         
-        taskName=JOptionPane.showInputDialog(null, "Enter your task name:", "Task Name", JOptionPane.PLAIN_MESSAGE);
-        
-        developerDetails = JOptionPane.showInputDialog(null, "Enter the developers First name and Last name:",
+        developerName = JOptionPane.showInputDialog(null, "Enter the developers First name and Last name:",
                 "Developers Details", JOptionPane.PLAIN_MESSAGE);
-        
-       
 
-        taskDuration = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter the number of hours the task is estimated to be:"
-                + "", "Task Duration", JOptionPane.PLAIN_MESSAGE));
+        taskDuration = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter the number of hours the task is estimated to be:",
+                "Task Duration", JOptionPane.PLAIN_MESSAGE));
+        
+        taskID =createTask.createTaskID();
+    
+        JOptionPane.showMessageDialog(null, taskID, "Auto-generated taskID", JOptionPane.INFORMATION_MESSAGE);
     }
     
     private static String taskStatus(){
@@ -137,13 +139,9 @@ public class PROG5121_POE_Part2 {
     
     private static void displayTask(){
         
-        JOptionPane.showMessageDialog(null,"Task Status: " + statusOptions[choice]
-                                   + "\nDeveloper Details: " + developerDetails
-                                   + "\nTask Number: "+numTask
-                                   + "\nTask Name: "+ taskName
-                                   + "\nTask Descrpition: "+taskDescription
-                                   + "\nTask ID: " 
-                                   + "\nTask Duration: " + taskDuration + " hours", 
+        Task displayTask = new Task(taskName, numTask, developerName, taskDescription, taskDuration, taskID, choice);
+            
+        JOptionPane.showMessageDialog(null,displayTask.printTaskDetails(), 
                                    "Task Displayed", JOptionPane.INFORMATION_MESSAGE);
         
     }

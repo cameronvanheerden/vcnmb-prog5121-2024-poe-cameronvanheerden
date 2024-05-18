@@ -12,11 +12,17 @@ public class Task {
     private String statusOptions[]= {"To do", "Done", "Doing"};
     private int choice;
 
-    public Task(String taskName, int taskNumber, String developerName){
+    public Task(String taskName, int taskNumber, String developerName, String taskDescription, int taskDuration, String taskID, int choice){
         
         this.taskNumber = taskNumber;
         this.taskName = taskName;
         this.developerName = developerName;
+        this.taskDescription = taskDescription;
+        this.taskDuration = taskDuration;
+        this.taskID = taskID;
+        if(choice >=0 && choice < statusOptions.length){
+            this.choice = choice;
+        }   
     }
     
     public boolean checkTaskDescription(String taskDescription){
@@ -28,17 +34,23 @@ public class Task {
     
         String firstTwoLetters = taskName.substring(0, Math.min(taskName.length(), 2)).toUpperCase();
         
-        String lastThreeLetters = developerName.substring(0, Math.max(developerName.length() - 3, 0)).toUpperCase();
+        String lastThreeLetters = developerName.length()>3 
+        
+        if (developerName.substring(developerName.length() - 3)).toUpperCase()
+            
+        return true;
+            
+        else if (developerName.toUpperCase())
+                return false;
     
-        taskID = firstTwoLetters + ":" + taskNumber + ":" + lastThreeLetters;
-    
-    return taskID;
+     return taskID = firstTwoLetters + ":" + taskNumber + ":" + lastThreeLetters;
+     
     }
     
-    /*public String printTaskDetails(){
+    public String printTaskDetails(){
         
         return "Task Status: " + statusOptions[choice]
-               + "\nDeveloper Details: " + developerDetails
+               + "\nDeveloper Details: " + developerName
                + "\nTask Number: "+taskNumber
                + "\nTask Name: "+ taskName 
                + "\nTask Descrpition: "+taskDescription
@@ -46,7 +58,7 @@ public class Task {
                + "\nTask Duration: " + taskDuration + " hours";
     } 
     
-    public int returnTotalHours(){
+    /*public int returnTotalHours(){
         
         
         
