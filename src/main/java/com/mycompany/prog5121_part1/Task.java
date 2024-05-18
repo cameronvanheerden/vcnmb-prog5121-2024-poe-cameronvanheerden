@@ -2,33 +2,44 @@ package com.mycompany.prog5121_part1;
 
 public class Task {
     
-    
-    
-   /* public boolean checkTaskDescription(String taskDescription){
+    private String taskID ="";
+    private String taskName = "";
+    private int taskNumber;
+    private String developerName ="";
+
+    public Task(String taskName, int taskNumber, String developerName){
         
-        if(taskDescription.length()<=50)
-            return true;
-        if(taskDescription.length()>50)
-            return false;
+        this.taskNumber = taskNumber;
+        this.taskName = taskName;
+        this.developerName = developerName;
+    }
+    
+   public boolean checkTaskDescription(String taskDescription){
         
+        return taskDescription.length()<=50;
     }
     
     public String createTaskID(){
     
+        String firstTwoLetters = taskName.substring(0, Math.min(taskName.length(), 2)).toUpperCase();
+        
+        String lastThreeLetters = developerName.substring(0, Math.max(developerName.length(), 3)).toUpperCase();
     
+        taskID = firstTwoLetters + ":" + taskNumber + ":" + lastThreeLetters;
     
+    return taskID;
     }
     
-    public String printTaskDetails(){
+   /* public String printTaskDetails(){
         
         
-        
+        return 
     } 
     
     public int returnTotalHours(){
         
         
         
-    }*/ 
+    }*/
     
 }

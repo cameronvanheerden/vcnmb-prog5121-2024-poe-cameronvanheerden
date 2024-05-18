@@ -12,7 +12,7 @@ public class PROG5121_POE_Part2 {
        static String developerDetails = "";
        static int taskDuration;
        static String taskID ="";
-       static String[] options = {"Add Task", "Show Report", "Quit"};
+       static String options[] = {"Add Task", "Show Report", "Quit"};
        static String statusOptions[] = {"To do", "Done", "Doing"};
        static int choice;
        
@@ -42,8 +42,6 @@ public class PROG5121_POE_Part2 {
     }
         while(numericMenu != 3);
         
-        displayTask();
-        goodbyeMessage();
  }
     private static void displayWelcome(){
         
@@ -83,7 +81,7 @@ public class PROG5121_POE_Part2 {
            createTask();
            taskStatus();
            displayTask();
-           
+           goodbyeMessage();
            System.exit(0);
        } 
     }       
@@ -132,13 +130,16 @@ public class PROG5121_POE_Part2 {
     
     private static void displayTask(){
         
+        Task displayTask = new Task(taskName, numTask, developerDetails);
+        
         JOptionPane.showMessageDialog(null,"Task Status: " + statusOptions[choice]
                                    + "\nDeveloper Details: " + developerDetails
                                    + "\nTask Number: "+numTask
                                    + "\nTask Name: "+ taskName
                                    + "\nTask Descrpition: "+taskDescription
-                                   + "\nTask ID: "
-                                   + "\nTask Duration: " + taskDuration + " hours", "Task Displayed", JOptionPane.INFORMATION_MESSAGE);
+                                   + "\nTask ID: " + displayTask.createTaskID()
+                                   + "\nTask Duration: " + taskDuration + " hours", 
+                                   "Task Displayed", JOptionPane.INFORMATION_MESSAGE);
         
     }
     
