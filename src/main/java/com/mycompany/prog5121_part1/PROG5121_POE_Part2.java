@@ -88,32 +88,39 @@ public class PROG5121_POE_Part2 {
     
     private static void createTask(){
         
-        taskName=JOptionPane.showInputDialog(null, "Enter your task name:", "Task Name", JOptionPane.PLAIN_MESSAGE);
-        taskDescription = JOptionPane.showInputDialog(null, "Enter a short description of the task (Max 50 characters): ", 
+         Task createTask = new Task(taskName, numTask, developerDetails);
+        
+        do{
+            taskDescription = JOptionPane.showInputDialog(null, "Enter a short description of the task (Max 50 characters): ", 
                 "Task Description", JOptionPane.PLAIN_MESSAGE);
         
-        boolean descriptionLength =false;
-        
-        while(taskDescription.length()>50){
-        
-        if(taskDescription.length()<=50)
+        if(taskDescription==null){
+            
+            break;
+        } 
+            
+        if(createTask.checkTaskDescription(taskDescription)){
                 JOptionPane.showMessageDialog(null, "Task successfully captured", "Description captured", JOptionPane.PLAIN_MESSAGE);
-        descriptionLength =true;
-         
-        if(taskDescription.length()>50)
-             JOptionPane.showMessageDialog(null, "Please enter a task description of less than 50 characters"
-                , "Description exceeded limit", JOptionPane.ERROR_MESSAGE);     
         }
+        else{
+             JOptionPane.showMessageDialog(null, "Please enter a task description of less than 50 characters"
+                , "Description exceeded limit", JOptionPane.ERROR_MESSAGE);  
+            }    
+        }
+        while(!createTask.checkTaskDescription(taskDescription));
+        
+        taskName=JOptionPane.showInputDialog(null, "Enter your task name:", "Task Name", JOptionPane.PLAIN_MESSAGE);
         
         developerDetails = JOptionPane.showInputDialog(null, "Enter the developers First name and Last name:",
                 "Developers Details", JOptionPane.PLAIN_MESSAGE);
+        
+       
+
         taskDuration = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter the number of hours the task is estimated to be:"
                 + "", "Task Duration", JOptionPane.PLAIN_MESSAGE));
-            
     }
     
     private static String taskStatus(){
-        
         
       choice = JOptionPane.showOptionDialog(null, "Select your Task Status: ", "Task Status", JOptionPane.DEFAULT_OPTION,
                 JOptionPane.PLAIN_MESSAGE, null, statusOptions, statusOptions[0]);
@@ -130,14 +137,12 @@ public class PROG5121_POE_Part2 {
     
     private static void displayTask(){
         
-        Task displayTask = new Task(taskName, numTask, developerDetails);
-        
         JOptionPane.showMessageDialog(null,"Task Status: " + statusOptions[choice]
                                    + "\nDeveloper Details: " + developerDetails
                                    + "\nTask Number: "+numTask
                                    + "\nTask Name: "+ taskName
                                    + "\nTask Descrpition: "+taskDescription
-                                   + "\nTask ID: " + displayTask.createTaskID()
+                                   + "\nTask ID: " 
                                    + "\nTask Duration: " + taskDuration + " hours", 
                                    "Task Displayed", JOptionPane.INFORMATION_MESSAGE);
         
