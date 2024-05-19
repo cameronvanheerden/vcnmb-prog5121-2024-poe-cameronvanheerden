@@ -34,16 +34,21 @@ public class Task {
     
         String firstTwoLetters = taskName.substring(0, Math.min(taskName.length(), 2)).toUpperCase();
         
-        String lastThreeLetters = developerName.length()>3 
+        String lastThreeLetters; 
         
-        if (developerName.substring(developerName.length() - 3)).toUpperCase()
+        if(developerName.length()>3){
             
-        return true;
-            
-        else if (developerName.toUpperCase())
-                return false;
+        lastThreeLetters = developerName.substring(developerName.length() - 3).toUpperCase();
+        
+        }     
+        else{
+              
+          lastThreeLetters =  developerName.toUpperCase();
+        }
+         taskID = firstTwoLetters + ":" + taskNumber + ":" + lastThreeLetters;
     
-     return taskID = firstTwoLetters + ":" + taskNumber + ":" + lastThreeLetters;
+    
+     return taskID;
      
     }
     

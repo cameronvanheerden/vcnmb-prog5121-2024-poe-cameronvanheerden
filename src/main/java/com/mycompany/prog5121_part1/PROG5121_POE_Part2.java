@@ -74,10 +74,20 @@ public class PROG5121_POE_Part2 {
         
 }
     private static void addTasks(){
+         
+        Integer numTask = null;
         
+        while(numTask==null){
+            
         numTask = Integer.parseInt(JOptionPane.showInputDialog(null, "How many tasks would you like to create?",
                    "Number of Tasks", JOptionPane.PLAIN_MESSAGE));
-       for(int counter=0; counter<numTask; counter++ ){
+        if(numTask==null)
+            JOptionPane.showMessageDialog(null, "Adding the number of task you would like to create is required",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        
+        }
+        
+        for(int counter=0; counter<numTask; counter++ ){
            createTask();
            taskStatus();
            displayTask();
@@ -118,8 +128,6 @@ public class PROG5121_POE_Part2 {
                 "Task Duration", JOptionPane.PLAIN_MESSAGE));
         
         taskID =createTask.createTaskID();
-    
-        JOptionPane.showMessageDialog(null, taskID, "Auto-generated taskID", JOptionPane.INFORMATION_MESSAGE);
     }
     
     private static String taskStatus(){
