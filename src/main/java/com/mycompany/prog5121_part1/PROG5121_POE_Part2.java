@@ -88,9 +88,13 @@ public class PROG5121_POE_Part2 {
                     "Error", JOptionPane.ERROR_MESSAGE);
         
         else if(isNumeric(taskNumber.trim()))
+            numTask = Integer.parseInt(taskNumber.trim());
         
         
-        }
+        else
+            JOptionPane.showMessageDialog(null, "Please enter a valid number", "Error", JOptionPane.ERROR_MESSAGE);
+        
+}
         
         for(int counter=0; counter<numTask; counter++ ){
            createTask();
@@ -99,32 +103,45 @@ public class PROG5121_POE_Part2 {
            goodbyeMessage();
            System.exit(0);
        } 
-    }       
+    }
     
     private static void createTask(){
         
-         Task createTask = new Task(taskName, taskNumber, developerName, taskDescription, taskDuration, "", choice);
+        taskDescription=null;
+        taskName =null;
+        
+        Task createTask = new Task(taskName, taskNumber, developerName, taskDescription, taskDuration, taskID, choice);
+         
+        while(taskName == null||taskName.isEmpty()){
         
         taskName=JOptionPane.showInputDialog(null, "Enter your task name:", "Task Name", JOptionPane.PLAIN_MESSAGE); 
+            
+            if(taskName==null|| taskName.isEmpty())
+                JOptionPane.showMessageDialog(null, "Task Name is required", "Error", JOptionPane.ERROR_MESSAGE);
+        
+         }
+         
          
         do{
             taskDescription = JOptionPane.showInputDialog(null, "Enter a short description of the task (Max 50 characters): ", 
                 "Task Description", JOptionPane.PLAIN_MESSAGE);
         
-        if(taskDescription==null){
+        if(taskDescription==null||taskDescription.isEmpty()){
             
-            break;
+            JOptionPane.showMessageDialog(null, "Task description is required", "Error", JOptionPane.ERROR_MESSAGE);
+            
+            taskDescription=null;
         } 
             
-        if(createTask.checkTaskDescription(taskDescription)){
-                JOptionPane.showMessageDialog(null, "Task successfully captured", "Description captured", JOptionPane.PLAIN_MESSAGE);
+       else if(!createTask.checkTaskDescription(taskDescription)){
+                JOptionPane.showMessageDialog(null, "Please enter a task description of less than 50 characters"
+                , "Description exceeded limit", JOptionPane.ERROR_MESSAGE);  
         }
         else{
-             JOptionPane.showMessageDialog(null, "Please enter a task description of less than 50 characters"
-                , "Description exceeded limit", JOptionPane.ERROR_MESSAGE);  
+             JOptionPane.showMessageDialog(null, "Task successfully captured", "Description captured", JOptionPane.PLAIN_MESSAGE);
             }    
         }
-        while(!createTask.checkTaskDescription(taskDescription));
+        while(taskDescription==null||!createTask.checkTaskDescription(taskDescription));
         
         developerName = JOptionPane.showInputDialog(null, "Enter the developers First name and Last name:",
                 "Developers Details", JOptionPane.PLAIN_MESSAGE);
@@ -188,8 +205,10 @@ public class PROG5121_POE_Part2 {
         JOptionPane.showMessageDialog(null, "Thank you for using my adding Tasks feature program", "Goodbye", JOptionPane.PLAIN_MESSAGE);
     }
 
-    private static boolean isNumeric(String trim) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    private static boolean isNumeric(String numeric) {
+     
+        return numeric.matches("\\d+");
+        
     }
 }
 

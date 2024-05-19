@@ -12,7 +12,7 @@ public class Task {
     private String statusOptions[]= {"To do", "Done", "Doing"};
     private int choice;
 
-    public Task(String taskName, int taskNumber, String developerName, String taskDescription, int taskDuration, String taskID, int choice){
+    public Task(String taskName, String developerName, String taskDescription, String taskID, int taskNumber, String taskID1, int taskDuration){
         
         this.taskNumber = taskNumber;
         this.taskName = taskName;
