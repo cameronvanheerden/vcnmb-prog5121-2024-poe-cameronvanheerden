@@ -6,7 +6,7 @@ public class PROG5121_POE_Part2 {
        static String firstName = "";
        static String lastName = "";
        static int numericMenu;
-       static int numTask;
+       static String taskNumber;
        static String taskName="";
        static String taskDescription="";
        static String developerName = "";
@@ -79,11 +79,16 @@ public class PROG5121_POE_Part2 {
         
         while(numTask==null){
             
-        numTask = Integer.parseInt(JOptionPane.showInputDialog(null, "How many tasks would you like to create?",
-                   "Number of Tasks", JOptionPane.PLAIN_MESSAGE));
-        if(numTask==null)
+           taskNumber= JOptionPane.showInputDialog(null, "How many tasks would you like to create?",
+                   "Number of Tasks", JOptionPane.PLAIN_MESSAGE);
+            
+        if(taskNumber==null||taskNumber.trim().isEmpty())
+            
             JOptionPane.showMessageDialog(null, "Adding the number of task you would like to create is required",
                     "Error", JOptionPane.ERROR_MESSAGE);
+        
+        else if(isNumeric(taskNumber.trim()))
+        
         
         }
         
@@ -98,7 +103,7 @@ public class PROG5121_POE_Part2 {
     
     private static void createTask(){
         
-         Task createTask = new Task(taskName, numTask, developerName, taskDescription, taskDuration, "", choice);
+         Task createTask = new Task(taskName, taskNumber, developerName, taskDescription, taskDuration, "", choice);
         
         taskName=JOptionPane.showInputDialog(null, "Enter your task name:", "Task Name", JOptionPane.PLAIN_MESSAGE); 
          
@@ -147,7 +152,7 @@ public class PROG5121_POE_Part2 {
     
     private static void displayTask(){
         
-        Task displayTask = new Task(taskName, numTask, developerName, taskDescription, taskDuration, taskID, choice);
+        Task displayTask = new Task(taskName, taskNumber, developerName, taskDescription, taskDuration, taskID, choice);
             
         JOptionPane.showMessageDialog(null,displayTask.printTaskDetails(), 
                                    "Task Displayed", JOptionPane.INFORMATION_MESSAGE);
@@ -181,6 +186,10 @@ public class PROG5121_POE_Part2 {
     private static void goodbyeMessage(){
         
         JOptionPane.showMessageDialog(null, "Thank you for using my adding Tasks feature program", "Goodbye", JOptionPane.PLAIN_MESSAGE);
+    }
+
+    private static boolean isNumeric(String trim) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
 
