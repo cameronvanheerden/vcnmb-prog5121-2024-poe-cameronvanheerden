@@ -6,13 +6,14 @@ public class Task {
     private String taskName = "";
     private int taskNumber;
     private String developerName ="";
-    private int taskDuration;
+    private String taskDuration;
     private String taskDescription;
     private String developerDetails;
     private String statusOptions[]= {"To do", "Done", "Doing"};
     private int choice;
+    private static int totalHours;
 
-    public Task(String taskName, String developerName, String taskDescription, String taskID, int taskNumber, String taskID1, int taskDuration){
+    public Task(String taskName, String developerName, String taskDescription, String taskID, String taskDuration){
         
         this.taskNumber = taskNumber;
         this.taskName = taskName;
@@ -22,7 +23,7 @@ public class Task {
         this.taskID = taskID;
         if(choice >=0 && choice < statusOptions.length){
             this.choice = choice;
-        }   
+        }  
     }
     
     public boolean checkTaskDescription(String taskDescription){
@@ -31,23 +32,13 @@ public class Task {
     }
     
     public String createTaskID(){
-    
-        String firstTwoLetters = taskName.substring(0, Math.min(taskName.length(), 2)).toUpperCase();
+
+        String firstTwoLetters = taskName.substring(Math.min(0, 2)).toUpperCase();
         
-        String lastThreeLetters; 
+        String lastThreeLetters = developerName.substring(Math.max(developerName.length() - 3, 0)).toUpperCase();
+             
+        taskID = firstTwoLetters + ":" + taskNumber + ":" + lastThreeLetters;
         
-        if(developerName.length()>3){
-            
-        lastThreeLetters = developerName.substring(developerName.length() - 3).toUpperCase();
-        
-        }     
-        else{
-              
-          lastThreeLetters =  developerName.toUpperCase();
-        }
-         taskID = firstTwoLetters + ":" + taskNumber + ":" + lastThreeLetters;
-    
-    
      return taskID;
      
     }
@@ -63,10 +54,9 @@ public class Task {
                + "\nTask Duration: " + taskDuration + " hours";
     } 
     
-    /*public int returnTotalHours(){
-        
-        
-        
-    }*/
+    public static int returnTotalHours(){
+          
+        return totalHours;
+    }
     
 }

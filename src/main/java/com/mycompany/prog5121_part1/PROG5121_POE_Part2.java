@@ -10,7 +10,8 @@ public class PROG5121_POE_Part2 {
        static String taskName="";
        static String taskDescription="";
        static String developerName = "";
-       static int taskDuration;
+       static String taskDuration;
+       static String taskHours ="";
        static String taskID ="";
        static String options[] = {"Add Task", "Show Report", "Quit"};
        static String statusOptions[] = {"To do", "Done", "Doing"};
@@ -42,10 +43,10 @@ public class PROG5121_POE_Part2 {
     }
         while(numericMenu != 3);
         
- }
+    }
     private static void displayWelcome(){
         
-       JOptionPane.showMessageDialog(null, "Welcome to EasyKanban.", "Welcome", JOptionPane.PLAIN_MESSAGE); 
+       JOptionPane.showMessageDialog(null, "Welcome to EasyKanban.", "Welcome", JOptionPane.INFORMATION_MESSAGE); 
        
     }
     
@@ -72,65 +73,81 @@ public class PROG5121_POE_Part2 {
        return JOptionPane.showOptionDialog(null, "Please select an option:", "Main Menu",
                    JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]) +1;
         
-}
+    }
     private static void addTasks(){
          
-        Integer numTask = null;
+        int numTask = 0;
         
-        while(numTask==null){
+        boolean validTaskNumber = false;
+        
+        while(!validTaskNumber){
             
            taskNumber= JOptionPane.showInputDialog(null, "How many tasks would you like to create?",
                    "Number of Tasks", JOptionPane.PLAIN_MESSAGE);
             
-        if(taskNumber==null||taskNumber.trim().isEmpty())
+        if(taskNumber==null||taskNumber.isEmpty()){
             
             JOptionPane.showMessageDialog(null, "Adding the number of task you would like to create is required",
                     "Error", JOptionPane.ERROR_MESSAGE);
+        }
         
-        else if(isNumeric(taskNumber.trim()))
-            numTask = Integer.parseInt(taskNumber.trim());
-        
-        
-        else
-            JOptionPane.showMessageDialog(null, "Please enter a valid number", "Error", JOptionPane.ERROR_MESSAGE);
-        
-}
+        else{
+            numTask = Integer.parseInt(taskNumber);
+            validTaskNumber =true;
+        }
+    }
         
         for(int counter=0; counter<numTask; counter++ ){
-           createTask();
-           taskStatus();
-           displayTask();
-           goodbyeMessage();
+         
+           addingTasks();
            System.exit(0);
        } 
     }
-    
-    private static void createTask(){
+    private static void addingTasks(){
         
-        taskDescription=null;
-        taskName =null;
+         createTaskName();
+         createTaskDescription();
+         developersDetails();
+         taskDuration();
+         createtaskID();
+         taskStatus();
+         displayTask();
+         goodbyeMessage();
         
+    }
+          
+    private static void createTaskName(){
+                     
+        boolean validName=false;
+                
         Task createTask = new Task(taskName, taskNumber, developerName, taskDescription, taskDuration, taskID, choice);
          
-        while(taskName == null||taskName.isEmpty()){
+        while(!validName){
         
         taskName=JOptionPane.showInputDialog(null, "Enter your task name:", "Task Name", JOptionPane.PLAIN_MESSAGE); 
             
-            if(taskName==null|| taskName.isEmpty())
+            if(taskName==null|| taskName.isEmpty()){
                 JOptionPane.showMessageDialog(null, "Task Name is required", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            else{    
+                validName=true;
+            }
+        }  
+    }  
+      
+    
+    private static void createTaskDescription(){
+                      
+        Task createTask = new Task(taskName, taskNumber, developerName, taskDescription, taskDuration, taskID, choice);
         
-         }
-         
-         
-        do{
+         do{
             taskDescription = JOptionPane.showInputDialog(null, "Enter a short description of the task (Max 50 characters): ", 
                 "Task Description", JOptionPane.PLAIN_MESSAGE);
         
-        if(taskDescription==null||taskDescription.isEmpty()){
+        if(taskDescription.isEmpty()){
             
             JOptionPane.showMessageDialog(null, "Task description is required", "Error", JOptionPane.ERROR_MESSAGE);
             
-            taskDescription=null;
         } 
             
        else if(!createTask.checkTaskDescription(taskDescription)){
@@ -142,14 +159,60 @@ public class PROG5121_POE_Part2 {
             }    
         }
         while(taskDescription==null||!createTask.checkTaskDescription(taskDescription));
+                
+    }
+    
+    private static void developersDetails(){
         
-        developerName = JOptionPane.showInputDialog(null, "Enter the developers First name and Last name:",
+        boolean validDetails = false;
+                
+        while(!validDetails){
+        
+        developerName = JOptionPane.showInputDialog(null, "Enter the developers first name and last name:",
                 "Developers Details", JOptionPane.PLAIN_MESSAGE);
-
-        taskDuration = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter the number of hours the task is estimated to be:",
-                "Task Duration", JOptionPane.PLAIN_MESSAGE));
         
-        taskID =createTask.createTaskID();
+        if(developerName==null||developerName.isEmpty()){
+            
+            JOptionPane.showMessageDialog(null, "The developers details are required","Error",JOptionPane.ERROR_MESSAGE);
+        }
+        else{ 
+            validDetails=true;
+        } 
+        }
+    }
+    
+    private static void taskDuration(){
+        
+        boolean validTime= false;
+        
+        int taskHours;
+                     
+        while(!validTime){
+            
+            taskDuration =JOptionPane.showInputDialog(null, "Enter the estimated duration of your task in hours:",
+                   "Task Duration", JOptionPane.PLAIN_MESSAGE);
+           
+           
+            if(taskDuration.isEmpty()){
+               
+               JOptionPane.showMessageDialog(null, "Entering the task duration is required", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            else{
+                 taskHours = Integer.parseInt(taskDuration);
+                 validTime = true;  
+            }
+        }
+    }
+    
+    private static void createtaskID(){
+        
+        Task createTaskID = new Task(taskName, taskNumber, developerName, taskDescription, taskDuration, taskID, choice);
+
+        taskID = createTaskID.createTaskID();
+        
+        JOptionPane.showMessageDialog(null, "Your auto-generated ID is:"
+                                             + " \n" + taskID, "Task ID", JOptionPane.INFORMATION_MESSAGE);
+        
     }
     
     private static String taskStatus(){
@@ -204,11 +267,4 @@ public class PROG5121_POE_Part2 {
         
         JOptionPane.showMessageDialog(null, "Thank you for using my adding Tasks feature program", "Goodbye", JOptionPane.PLAIN_MESSAGE);
     }
-
-    private static boolean isNumeric(String numeric) {
-     
-        return numeric.matches("\\d+");
-        
-    }
 }
-
