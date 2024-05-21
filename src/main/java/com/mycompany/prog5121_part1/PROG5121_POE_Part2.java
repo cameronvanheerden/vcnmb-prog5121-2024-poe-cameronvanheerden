@@ -1,5 +1,7 @@
 package com.mycompany.prog5121_part1;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class PROG5121_POE_Part2 {
@@ -9,13 +11,15 @@ public class PROG5121_POE_Part2 {
        static String taskNumber;
        static String taskName="";
        static String taskDescription="";
-       static String developerName = "";
+       static String developerName;
        static String taskDuration;
        static String taskHours ="";
        static String taskID ="";
        static String options[] = {"Add Task", "Show Report", "Quit"};
        static String statusOptions[] = {"To do", "Done", "Doing"};
        static int choice;
+       static int totalHours;
+       static List<Task> tasks = new ArrayList();
        
     public static void main(String[] args) {
         
@@ -109,7 +113,6 @@ public class PROG5121_POE_Part2 {
          createTaskDescription();
          developersDetails();
          taskDuration();
-         createtaskID();
          taskStatus();
          displayTask();
          goodbyeMessage();
@@ -162,7 +165,9 @@ public class PROG5121_POE_Part2 {
                 
     }
     
-    private static void developersDetails(){
+    private static String developersDetails(){
+        
+        developerName = "";
         
         boolean validDetails = false;
                 
@@ -179,13 +184,14 @@ public class PROG5121_POE_Part2 {
             validDetails=true;
         } 
         }
+        return developerName;
     }
     
-    private static void taskDuration(){
+    private static int taskDuration(){
         
         boolean validTime= false;
         
-        int taskHours;
+        int taskHours = 0;
                      
         while(!validTime){
             
@@ -202,17 +208,7 @@ public class PROG5121_POE_Part2 {
                  validTime = true;  
             }
         }
-    }
-    
-    private static void createtaskID(){
-        
-        Task createTaskID = new Task(taskName, taskNumber, developerName, taskDescription, taskDuration, taskID, choice);
-
-        taskID = createTaskID.createTaskID();
-        
-        JOptionPane.showMessageDialog(null, "Your auto-generated ID is:"
-                                             + " \n" + taskID, "Task ID", JOptionPane.INFORMATION_MESSAGE);
-        
+        return taskHours;
     }
     
     private static String taskStatus(){
@@ -232,11 +228,22 @@ public class PROG5121_POE_Part2 {
     
     private static void displayTask(){
         
-        Task displayTask = new Task(taskName, taskNumber, developerName, taskDescription, taskDuration, taskID, choice);
+       for(Task task: tasks){
             
-        JOptionPane.showMessageDialog(null,displayTask.printTaskDetails(), 
+        JOptionPane.showMessageDialog(null, task.printTaskDetails(), 
                                    "Task Displayed", JOptionPane.INFORMATION_MESSAGE);
+       }
+    }
+    
+    private static int totalHours(){
         
+        totalHours = 0;
+        
+        for(Task task: tasks){
+            
+            totalHours += task.returnTotalHours();
+        }
+        return totalHours;
     }
     
     

@@ -13,7 +13,7 @@ public class Task {
     private int choice;
     private static int totalHours;
 
-    public Task(String taskName, String developerName, String taskDescription, String taskID, String taskDuration){
+    public Task(String taskName, String developerName, String taskDescription, String taskID, String taskDuration, String taskID1, int choice1){
         
         this.taskNumber = taskNumber;
         this.taskName = taskName;
@@ -54,7 +54,7 @@ public class Task {
                + "\nTask Duration: " + taskDuration + " hours";
     } 
     
-    public static int returnTotalHours(){
+    public int returnTotalHours(){
           
         return totalHours;
     }
