@@ -10,9 +10,10 @@ public class Task {
     private String taskDescription;
     private String statusOptions[]= {"To do", "Done", "Doing"};
     private int choice;
+    private String taskStatus ="";
     private static int totalHours;
 
-    public Task(String taskName, String developerName, String taskDescription, String taskID, int taskCounter, String taskDuration){
+    public Task(String taskName, String developerName, String taskDescription, String taskDuration, int taskNumber, String taskStatus){
         
         this.taskNumber = taskNumber;
         this.taskName = taskName;
@@ -20,10 +21,8 @@ public class Task {
         this.taskDescription = taskDescription;
         this.taskDuration = taskDuration;
         this.taskID = createTaskID();
-        if(choice >=0 && choice < statusOptions.length){
-            this.choice = choice;
+        this.taskStatus= taskStatus;
         }  
-    }
     
     public boolean checkTaskDescription(){
         

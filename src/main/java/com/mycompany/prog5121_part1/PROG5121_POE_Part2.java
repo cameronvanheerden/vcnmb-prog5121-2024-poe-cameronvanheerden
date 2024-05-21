@@ -19,6 +19,7 @@ public class PROG5121_POE_Part2 {
        static String options[] = {"Add Task", "Show Report", "Quit"};
        static String statusOptions[] = {"To do", "Done", "Doing"};
        static int choice;
+       static String taskStatus ="";
        static int totalHours;
        static List<Task> tasks = new ArrayList();
        
@@ -113,11 +114,22 @@ public class PROG5121_POE_Part2 {
         taskDescription = createTaskDescription();
         developerName = developersDetails();
         taskHours = taskDuration();
-        statusOptions[choice] =taskStatus();
+        taskStatus =taskStatus();
         
-        Task addingTasks = new Task(taskName, taskDescription, developerName, taskDuration, taskCounter, statusOptions[choice]); 
+        Task addingTasks = new Task(taskName, developerName, taskDescription, taskDuration, taskCounter, taskStatus); 
+        
+        if(addingTasks.checkTaskDescription()){
+            tasks.add(addingTasks);
+            taskCounter++;
+                JOptionPane.showMessageDialog(null, "Task captured successfully", "Task Description captured", JOptionPane.PLAIN_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Task description is required", "Error", JOptionPane.ERROR_MESSAGE);
+        }
         
          displayTask();
+         JOptionPane.showMessageDialog(null, "Total combined hours of tasks: "+ totalHours(), "Total Hours", JOptionPane.INFORMATION_MESSAGE);
+         
          goodbyeMessage();
         
     }
@@ -162,7 +174,7 @@ public class PROG5121_POE_Part2 {
                 , "Description exceeded limit", JOptionPane.ERROR_MESSAGE);  
         }
         else{
-             JOptionPane.showMessageDialog(null, "Task successfully captured", "Description captured", JOptionPane.PLAIN_MESSAGE);
+             JOptionPane.showMessageDialog(null, "Task successfully captured", "Task Description captured", JOptionPane.PLAIN_MESSAGE);
              
              break;
             }    
