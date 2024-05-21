@@ -8,39 +8,36 @@ public class Task {
     private String developerName ="";
     private String taskDuration;
     private String taskDescription;
-    private String developerDetails;
     private String statusOptions[]= {"To do", "Done", "Doing"};
     private int choice;
     private static int totalHours;
 
-    public Task(String taskName, String developerName, String taskDescription, String taskID, String taskDuration, String taskID1, int choice1){
+    public Task(String taskName, String developerName, String taskDescription, String taskID, int taskCounter, String taskDuration){
         
         this.taskNumber = taskNumber;
         this.taskName = taskName;
         this.developerName = developerName;
         this.taskDescription = taskDescription;
         this.taskDuration = taskDuration;
-        this.taskID = taskID;
+        this.taskID = createTaskID();
         if(choice >=0 && choice < statusOptions.length){
             this.choice = choice;
         }  
     }
     
-    public boolean checkTaskDescription(String taskDescription){
+    public boolean checkTaskDescription(){
         
         return taskDescription.length()<=50;
     }
     
     public String createTaskID(){
 
-        String firstTwoLetters = taskName.substring(Math.min(0, 2)).toUpperCase();
+        String firstTwoLetters = taskName.substring(0, 2).toUpperCase();
         
-        String lastThreeLetters = developerName.substring(Math.max(developerName.length() - 3, 0)).toUpperCase();
+        String lastThreeLetters = developerName.substring(developerName.length() - 3).toUpperCase();
              
-        taskID = firstTwoLetters + ":" + taskNumber + ":" + lastThreeLetters;
-        
-     return taskID;
-     
+        return firstTwoLetters + ":" + taskNumber + ":" + lastThreeLetters;
+             
     }
     
     public String printTaskDetails(){

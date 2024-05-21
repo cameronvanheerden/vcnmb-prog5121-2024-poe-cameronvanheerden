@@ -8,12 +8,13 @@ public class PROG5121_POE_Part2 {
        static String firstName = "";
        static String lastName = "";
        static int numericMenu;
+       static int taskCounter = 0;
        static String taskNumber;
-       static String taskName="";
-       static String taskDescription="";
+       static String taskName;
+       static String taskDescription;
        static String developerName;
        static String taskDuration;
-       static String taskHours ="";
+       static int taskHours;
        static String taskID ="";
        static String options[] = {"Add Task", "Show Report", "Quit"};
        static String statusOptions[] = {"To do", "Done", "Doing"};
@@ -104,27 +105,29 @@ public class PROG5121_POE_Part2 {
         for(int counter=0; counter<numTask; counter++ ){
          
            addingTasks();
-           System.exit(0);
        } 
     }
     private static void addingTasks(){
         
-         createTaskName();
-         createTaskDescription();
-         developersDetails();
-         taskDuration();
-         taskStatus();
+        taskName = createTaskName();
+        taskDescription = createTaskDescription();
+        developerName = developersDetails();
+        taskHours = taskDuration();
+        statusOptions[choice] =taskStatus();
+        
+        Task addingTasks = new Task(taskName, taskDescription, developerName, taskDuration, taskCounter, statusOptions[choice]); 
+        
          displayTask();
          goodbyeMessage();
         
     }
           
-    private static void createTaskName(){
+    private static String createTaskName(){
                      
+        taskName="";
+        
         boolean validName=false;
-                
-        Task createTask = new Task(taskName, taskNumber, developerName, taskDescription, taskDuration, taskID, choice);
-         
+                        
         while(!validName){
         
         taskName=JOptionPane.showInputDialog(null, "Enter your task name:", "Task Name", JOptionPane.PLAIN_MESSAGE); 
@@ -136,14 +139,15 @@ public class PROG5121_POE_Part2 {
                 validName=true;
             }
         }  
+        return taskName;
     }  
       
     
-    private static void createTaskDescription(){
-                      
-        Task createTask = new Task(taskName, taskNumber, developerName, taskDescription, taskDuration, taskID, choice);
+    private static String createTaskDescription(){
         
-         do{
+        taskDescription= "";
+                             
+         while(true){
             taskDescription = JOptionPane.showInputDialog(null, "Enter a short description of the task (Max 50 characters): ", 
                 "Task Description", JOptionPane.PLAIN_MESSAGE);
         
@@ -153,15 +157,17 @@ public class PROG5121_POE_Part2 {
             
         } 
             
-       else if(!createTask.checkTaskDescription(taskDescription)){
+       else if(taskDescription.length()>50){
                 JOptionPane.showMessageDialog(null, "Please enter a task description of less than 50 characters"
                 , "Description exceeded limit", JOptionPane.ERROR_MESSAGE);  
         }
         else{
              JOptionPane.showMessageDialog(null, "Task successfully captured", "Description captured", JOptionPane.PLAIN_MESSAGE);
+             
+             break;
             }    
         }
-        while(taskDescription==null||!createTask.checkTaskDescription(taskDescription));
+        return taskDescription;
                 
     }
     
@@ -191,7 +197,7 @@ public class PROG5121_POE_Part2 {
         
         boolean validTime= false;
         
-        int taskHours = 0;
+        taskHours = 0;
                      
         while(!validTime){
             
