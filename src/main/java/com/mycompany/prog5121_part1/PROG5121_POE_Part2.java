@@ -5,10 +5,9 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 public class PROG5121_POE_Part2 {
-       static int taskCounter = 0;
+       static int taskCounter = 1;
        static String statusOptions[] = {"To do", "Done", "Doing"};
        static List<Task> tasks = new ArrayList();
-       static int choice = 0;
        
     public static void main(String[] args) {
         int choice;
@@ -29,7 +28,9 @@ public class PROG5121_POE_Part2 {
                 
                 case 3:
                     quit = confirmQuit();
+                    if(quit){
                     goodbyeMessage();
+                    }
                 break;
                 
                 default:
@@ -77,16 +78,18 @@ public class PROG5121_POE_Part2 {
     }
     private static void addTasks(){
         
-        int taskNumber = 0; 
-          
-        taskNumber=Integer.parseInt(JOptionPane.showInputDialog(null, "How many tasks would you like to create?",
+        int taskNumber=Integer.parseInt(JOptionPane.showInputDialog(null, "How many tasks would you like to create?",
                    "Number of Tasks", JOptionPane.PLAIN_MESSAGE));
           
         for(int counter=0; counter<taskNumber; counter++ ){
          
            addingTasks();
        } 
+        
+        JOptionPane.showMessageDialog(null, "The Total combined hours of all tasks: " + Task.returnTotalHours(tasks)
+                + " Total Hours", "Combined hours", JOptionPane.INFORMATION_MESSAGE);
     }
+    
     private static void addingTasks(){
         
         String taskName = createTaskName();
@@ -94,9 +97,10 @@ public class PROG5121_POE_Part2 {
         String developerName = developersDetails();
         int taskDuration = taskDuration();
         String taskStatus =taskStatus();
+        String taskID = createTaskID(taskName, developerName);
         
         
-        Task addingTasks = new Task(); 
+        Task addingTasks = new Task(taskCounter, taskName, taskDescription, developerName, taskDuration, taskStatus, taskID); 
         
         if(addingTasks.checkTaskDescription()){
             tasks.add(addingTasks);
@@ -107,8 +111,7 @@ public class PROG5121_POE_Part2 {
             JOptionPane.showMessageDialog(null, "Task description is required", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
-         displayTask();
-         JOptionPane.showMessageDialog(null, "Total combined hours of tasks: "+ addingTasks.returnTotalHours(), "Total Hours", JOptionPane.INFORMATION_MESSAGE);
+         displayTask(addingTasks);
          
         
     }
@@ -185,51 +188,31 @@ public class PROG5121_POE_Part2 {
     }
     
     private static int taskDuration(){
-        
-       int taskDuration = 0;
-                     
-           taskDuration=Integer.parseInt(JOptionPane.showInputDialog(null, "Enter the estimated duration of your task in hours:",
+       
+        return Integer.parseInt(JOptionPane.showInputDialog(null, "Enter the estimated duration of your task in hours:",
                    "Task Duration", JOptionPane.PLAIN_MESSAGE));
-           
-        return taskDuration;
     }
+    
+    private static String createTaskID(String taskName, String developerName){
+        
+        
+        return taskName.substring(0 , 2).toUpperCase()+ ":" + taskCounter + ":"+ developerName.substring(developerName.length() - 3).toUpperCase();
+    }
+    
     
     private static String taskStatus(){
         
-      choice = JOptionPane.showOptionDialog(null, "Select your Task Status: ", "Task Status", JOptionPane.DEFAULT_OPTION,
-                JOptionPane.PLAIN_MESSAGE, null, statusOptions, statusOptions[0]);
-       
-        if(choice >= 0 && choice < statusOptions.length ){
-            
+      int choice = JOptionPane.showOptionDialog(null, "Select your Task Status: ", "Task Status", JOptionPane.DEFAULT_OPTION,
+                JOptionPane.INFORMATION_MESSAGE, null, statusOptions, statusOptions[0]);
+               
           return statusOptions[choice];  
-        }     
-        else{
-                
-          return "Invalid choice";
-        }   
     }  
     
-    private static void displayTask(){
+    private static void displayTask(Task tasks){
         
-       for(Task task: tasks){
-            
-        JOptionPane.showMessageDialog(null, task.printTaskDetails(), 
-                                   "Task Displayed", JOptionPane.INFORMATION_MESSAGE);
-       }
+        JOptionPane.showMessageDialog(null, tasks.printTaskDetails(), 
+                                   "Task Details", JOptionPane.INFORMATION_MESSAGE);
     }
-    
-    private static int totalHours(){
-        
-       int totalHours = 0;
-       
-        for(Task task: tasks){
-     
-            totalHours = task.returnTotalHours();
-        }
-             
-        return totalHours;
-    }
-    
     
     private static void showReport(){
         
