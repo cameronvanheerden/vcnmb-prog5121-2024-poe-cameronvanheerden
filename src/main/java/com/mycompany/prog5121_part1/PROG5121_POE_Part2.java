@@ -5,31 +5,20 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 public class PROG5121_POE_Part2 {
-       static String firstName = "";
-       static String lastName = "";
-       static int numericMenu;
        static int taskCounter = 0;
-       static String taskNumber;
-       static String taskName;
-       static String taskDescription;
-       static String developerName;
-       static String taskDuration;
-       static int taskHours;
-       static String taskID ="";
-       static String options[] = {"Add Task", "Show Report", "Quit"};
        static String statusOptions[] = {"To do", "Done", "Doing"};
-       static int choice;
-       static String taskStatus ="";
-       static int totalHours;
        static List<Task> tasks = new ArrayList();
+       static int choice = 0;
        
     public static void main(String[] args) {
+        int choice;
+        boolean quit = false;
         
         displayWelcome();
         displayName();  
-        do{numericMenu = displayMenu();
+        do{choice = displayMenu();
         
-            switch(numericMenu){
+            switch(choice){
                 case 1: 
                     addTasks();
                 break;
@@ -39,7 +28,8 @@ public class PROG5121_POE_Part2 {
                 break;
                 
                 case 3:
-                    confirmQuit();
+                    quit = confirmQuit();
+                    goodbyeMessage();
                 break;
                 
                 default:
@@ -47,7 +37,7 @@ public class PROG5121_POE_Part2 {
                     
             }
     }
-        while(numericMenu != 3);
+        while(!quit);
         
     }
     private static void displayWelcome(){
@@ -57,7 +47,9 @@ public class PROG5121_POE_Part2 {
     }
     
     private static void displayName(){
-              
+        String firstName = "";
+        String lastName = "";
+        
         while(firstName.isBlank()||lastName.isBlank()){
         firstName = JOptionPane.showInputDialog(null, "Please enter your first name:", "Sign up", JOptionPane.PLAIN_MESSAGE);
         lastName = JOptionPane.showInputDialog(null, "Please enter your last name: ", "Sign up", JOptionPane.PLAIN_MESSAGE);
@@ -75,48 +67,36 @@ public class PROG5121_POE_Part2 {
     
     
     private static int displayMenu(){
+        String options[] = {"Add Task", "Show Report", "Quit"};
               
-       return JOptionPane.showOptionDialog(null, "Please select an option:", "Main Menu",
-                   JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]) +1;
+       int choice = JOptionPane.showOptionDialog(null, "Please select an option:", "Main Menu",
+                   JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+       
+       return choice +1;
         
     }
     private static void addTasks(){
-         
-        int numTask = 0;
         
-        boolean validTaskNumber = false;
-        
-        while(!validTaskNumber){
-            
-           taskNumber= JOptionPane.showInputDialog(null, "How many tasks would you like to create?",
-                   "Number of Tasks", JOptionPane.PLAIN_MESSAGE);
-            
-        if(taskNumber==null||taskNumber.isEmpty()){
-            
-            JOptionPane.showMessageDialog(null, "Adding the number of task you would like to create is required",
-                    "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        
-        else{
-            numTask = Integer.parseInt(taskNumber);
-            validTaskNumber =true;
-        }
-    }
-        
-        for(int counter=0; counter<numTask; counter++ ){
+        int taskNumber = 0; 
+          
+        taskNumber=Integer.parseInt(JOptionPane.showInputDialog(null, "How many tasks would you like to create?",
+                   "Number of Tasks", JOptionPane.PLAIN_MESSAGE));
+          
+        for(int counter=0; counter<taskNumber; counter++ ){
          
            addingTasks();
        } 
     }
     private static void addingTasks(){
         
-        taskName = createTaskName();
-        taskDescription = createTaskDescription();
-        developerName = developersDetails();
-        taskHours = taskDuration();
-        taskStatus =taskStatus();
+        String taskName = createTaskName();
+        String taskDescription = createTaskDescription();
+        String developerName = developersDetails();
+        int taskDuration = taskDuration();
+        String taskStatus =taskStatus();
         
-        Task addingTasks = new Task(taskName, developerName, taskDescription, taskDuration, taskCounter, taskStatus); 
+        
+        Task addingTasks = new Task(); 
         
         if(addingTasks.checkTaskDescription()){
             tasks.add(addingTasks);
@@ -128,15 +108,14 @@ public class PROG5121_POE_Part2 {
         }
         
          displayTask();
-         JOptionPane.showMessageDialog(null, "Total combined hours of tasks: "+ totalHours(), "Total Hours", JOptionPane.INFORMATION_MESSAGE);
+         JOptionPane.showMessageDialog(null, "Total combined hours of tasks: "+ addingTasks.returnTotalHours(), "Total Hours", JOptionPane.INFORMATION_MESSAGE);
          
-         goodbyeMessage();
         
     }
           
     private static String createTaskName(){
                      
-        taskName="";
+        String taskName="";
         
         boolean validName=false;
                         
@@ -157,7 +136,7 @@ public class PROG5121_POE_Part2 {
     
     private static String createTaskDescription(){
         
-        taskDescription= "";
+         String taskDescription= "";
                              
          while(true){
             taskDescription = JOptionPane.showInputDialog(null, "Enter a short description of the task (Max 50 characters): ", 
@@ -185,7 +164,7 @@ public class PROG5121_POE_Part2 {
     
     private static String developersDetails(){
         
-        developerName = "";
+       String developerName = "";
         
         boolean validDetails = false;
                 
@@ -207,26 +186,12 @@ public class PROG5121_POE_Part2 {
     
     private static int taskDuration(){
         
-        boolean validTime= false;
-        
-        taskHours = 0;
+       int taskDuration = 0;
                      
-        while(!validTime){
-            
-            taskDuration =JOptionPane.showInputDialog(null, "Enter the estimated duration of your task in hours:",
-                   "Task Duration", JOptionPane.PLAIN_MESSAGE);
+           taskDuration=Integer.parseInt(JOptionPane.showInputDialog(null, "Enter the estimated duration of your task in hours:",
+                   "Task Duration", JOptionPane.PLAIN_MESSAGE));
            
-           
-            if(taskDuration.isEmpty()){
-               
-               JOptionPane.showMessageDialog(null, "Entering the task duration is required", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-            else{
-                 taskHours = Integer.parseInt(taskDuration);
-                 validTime = true;  
-            }
-        }
-        return taskHours;
+        return taskDuration;
     }
     
     private static String taskStatus(){
@@ -255,12 +220,13 @@ public class PROG5121_POE_Part2 {
     
     private static int totalHours(){
         
-        totalHours = 0;
-        
+       int totalHours = 0;
+       
         for(Task task: tasks){
-            
-            totalHours += task.returnTotalHours();
+     
+            totalHours = task.returnTotalHours();
         }
+             
         return totalHours;
     }
     
@@ -268,24 +234,16 @@ public class PROG5121_POE_Part2 {
     private static void showReport(){
         
         JOptionPane.showMessageDialog(null, "Coming soon", "Report", JOptionPane.INFORMATION_MESSAGE);
-        goodbyeMessage();
-        System.exit(0);
+        
     }
     
-    private static void confirmQuit(){
+    private static boolean confirmQuit(){
         
-        int quit = JOptionPane.showConfirmDialog(null, "Are you sure you would like to exit the program?",
+        int confirmQuit = JOptionPane.showConfirmDialog(null, "Are you sure you would like to exit the program?",
                 "Confirm Quit", JOptionPane.YES_NO_OPTION);
         
-        if(quit==JOptionPane.YES_OPTION) {
-            
-            goodbyeMessage();
-            System.exit(0);
-        }
-        
-        if(quit==JOptionPane.NO_OPTION){
-            displayMenu();
-        }
+      
+        return confirmQuit ==JOptionPane.YES_OPTION;
     }
     
     private static void goodbyeMessage(){
