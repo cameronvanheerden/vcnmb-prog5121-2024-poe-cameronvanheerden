@@ -100,7 +100,7 @@ public class PROG5121_POE_Part2 {
         String taskID = createTaskID(taskName, developerName);
         
         
-        Task addingTasks = new Task(taskCounter, taskName, taskDescription, developerName, taskDuration, taskStatus, taskID); 
+        Task addingTasks = new Task(taskCounter, taskName, taskDescription, developerName, taskDuration, taskStatus); 
         
         if(addingTasks.checkTaskDescription()){
             tasks.add(addingTasks);
@@ -216,7 +216,7 @@ public class PROG5121_POE_Part2 {
     
     private static void showReport(){
         
-        JOptionPane.showMessageDialog(null, "Coming soon", "Report", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Coming soon....", "Report", JOptionPane.INFORMATION_MESSAGE);
         
     }
     

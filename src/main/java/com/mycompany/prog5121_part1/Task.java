@@ -13,7 +13,7 @@ public class Task {
     private String taskStatus;
 
    
-    public Task(int taskNumber, String taskName, String taskDescription, String developerName, int taskDuration, String taskStatus, String taskID){
+    public Task(int taskNumber, String taskName, String taskDescription, String developerName, int taskDuration, String taskStatus){
         
         this.taskNumber= taskNumber;
         this.taskName = taskName;
