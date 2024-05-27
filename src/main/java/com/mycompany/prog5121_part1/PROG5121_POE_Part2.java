@@ -52,8 +52,8 @@ public class PROG5121_POE_Part2 {
         String lastName = "";
         
         while(firstName.isBlank()||lastName.isBlank()){
-        firstName = JOptionPane.showInputDialog(null, "Please enter your first name:", "Sign up", JOptionPane.PLAIN_MESSAGE);
-        lastName = JOptionPane.showInputDialog(null, "Please enter your last name: ", "Sign up", JOptionPane.PLAIN_MESSAGE);
+        firstName = JOptionPane.showInputDialog(null, "Please enter your first name:", "Login", JOptionPane.PLAIN_MESSAGE);
+        lastName = JOptionPane.showInputDialog(null, "Please enter your last name: ", "Login", JOptionPane.PLAIN_MESSAGE);
         
         if(firstName.isEmpty())
             JOptionPane.showMessageDialog(null, "First name is required", "Error", JOptionPane.ERROR_MESSAGE);
@@ -100,12 +100,12 @@ public class PROG5121_POE_Part2 {
         String taskID = createTaskID(taskName, developerName);
         
         
-        Task addingTasks = new Task(taskCounter, taskName, taskDescription, developerName, taskDuration, taskStatus); 
+        Task addingTasks = new Task(taskCounter, taskName, taskDescription, developerName, taskDuration, taskStatus, taskID); 
         
         if(addingTasks.checkTaskDescription()){
             tasks.add(addingTasks);
             taskCounter++;
-                JOptionPane.showMessageDialog(null, "Task captured successfully", "Task Description captured", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Task captured successfully", "Task Description captured", JOptionPane.INFORMATION_MESSAGE);
         }
         else{
             JOptionPane.showMessageDialog(null, "Task description is required", "Error", JOptionPane.ERROR_MESSAGE);
@@ -156,7 +156,7 @@ public class PROG5121_POE_Part2 {
                 , "Description exceeded limit", JOptionPane.ERROR_MESSAGE);  
         }
         else{
-             JOptionPane.showMessageDialog(null, "Task successfully captured", "Task Description captured", JOptionPane.PLAIN_MESSAGE);
+             JOptionPane.showMessageDialog(null, "Task successfully captured", "Task Description captured", JOptionPane.INFORMATION_MESSAGE);
              
              break;
             }    
@@ -223,7 +223,7 @@ public class PROG5121_POE_Part2 {
     private static boolean confirmQuit(){
         
         int confirmQuit = JOptionPane.showConfirmDialog(null, "Are you sure you would like to exit the program?",
-                "Confirm Quit", JOptionPane.YES_NO_OPTION);
+                "Confirm Quit", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         
       
         return confirmQuit ==JOptionPane.YES_OPTION;
@@ -231,6 +231,6 @@ public class PROG5121_POE_Part2 {
     
     private static void goodbyeMessage(){
         
-        JOptionPane.showMessageDialog(null, "Thank you for using my adding Tasks feature program", "Goodbye", JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Thank you for using my adding Tasks feature program", "Goodbye", JOptionPane.INFORMATION_MESSAGE);
     }
 }

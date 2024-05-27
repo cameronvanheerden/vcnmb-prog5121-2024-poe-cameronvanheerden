@@ -13,7 +13,7 @@ public class Task {
     private String taskStatus;
 
    
-    public Task(int taskNumber, String taskName, String taskDescription, String developerName, int taskDuration, String taskStatus){
+    public Task(int taskNumber, String taskName, String taskDescription, String developerName, int taskDuration, String taskStatus, String taskID){
         
         this.taskNumber= taskNumber;
         this.taskName = taskName;
@@ -32,7 +32,7 @@ public class Task {
     
     public String createTaskID(){
        
-        return taskName.substring(0 , 2).toUpperCase() + taskNumber + developerName.substring(developerName.length() - 3).toUpperCase();
+        return taskName.substring(0 , 2).toUpperCase()+ ":" + taskNumber + ":" +  developerName.substring(developerName.length() - 3).toUpperCase();
              
     }
     
