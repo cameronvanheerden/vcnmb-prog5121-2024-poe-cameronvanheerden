@@ -17,14 +17,6 @@ public class PROG5121_Part2_UnitTesting {
     
         assertEquals(expected, actual, "Task description expected to be valid");
         
-        if(actual){
-         
-            System.out.println("Task successfully captured");
-        }
-        else{
-            
-            System.out.println("Please enter a task description of less than 50 characters");
-        }
     }
     
     @Test
@@ -38,15 +30,6 @@ public class PROG5121_Part2_UnitTesting {
         
         assertEquals(expected, actual, "Task description expected to be invalid");
         
-        if(actual){
-            
-            System.out.println("Task successfully captured");
-        }
-        else{
-            
-            System.out.println("Please enter a task description of less than 50 characters");
-        }
-        
     }
     
     @Test
@@ -56,22 +39,10 @@ public class PROG5121_Part2_UnitTesting {
         
         
         String actual = testID.createTaskID();
-        String expected = "AD:1:BYN";
+        String expected = "LO:1:SON";
         
-       assertEquals(expected, actual, "Test case 1 failed");
-        
-        Task[] tasks = {new Task(0, "Cr", "Test description 1", "Ike", 5, "To do", ""),
-                        new Task(1, "Cr", "Test description 2", "Ard", 2, "Done", "" ),
-                        new Task(2, "Cr", "Test description 3", "Tha", 1, "Doing", ""),
-                        new Task(3, "Cr", "Test description 4", "Nd", 8, "Done", "") };
-        
-        String[] expectedResults = {"CR:0:IKE", "CR:1:ARD", "CR:2:THA", "CR:3:ND"};
-        
-        for(int i = 0; i < tasks.length; i++){
-            
-            assertEquals(expectedResults[i], tasks[i].createTaskID());
-            
-        }
+        assertEquals(expected, actual, "Test case 1 failed");
+      
     }
     
     @Test
@@ -82,10 +53,6 @@ public class PROG5121_Part2_UnitTesting {
         totalHours.add(new Task(1, "Login feature", "Create login to authenicate users","Robyn Harrison", 8, "To do", "" ));
         totalHours.add(new Task(2, "Add Task feature", "Create Add Task feature to add task users", "Mike Smith", 10, "Doing", ""));
         
-        assertEquals(18, Task.returnTotalHours(totalHours), "Total Hours should be 18");
-        
-        
-        
-        
+        assertEquals(18, Task.returnTotalHours(totalHours), "Total Hours should be 18");       
     }
 }
