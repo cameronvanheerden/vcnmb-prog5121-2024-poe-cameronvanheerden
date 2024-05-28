@@ -1,4 +1,6 @@
 import com.mycompany.prog5121_part1.Task;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -56,7 +58,7 @@ public class PROG5121_Part2_UnitTesting {
         String actual = testID.createTaskID();
         String expected = "AD:1:BYN";
         
-       // assertEquals(expected, actual, "Test case 1 failed");
+       assertEquals(expected, actual, "Test case 1 failed");
         
         Task[] tasks = {new Task(0, "Cr", "Test description 1", "Ike", 5, "To do", ""),
                         new Task(1, "Cr", "Test description 2", "Ard", 2, "Done", "" ),
@@ -71,5 +73,19 @@ public class PROG5121_Part2_UnitTesting {
             
         }
     }
-   
+    
+    @Test
+    public void testReturnTotalHours(){
+        
+        List <Task> totalHours = new ArrayList<>();
+        
+        totalHours.add(new Task(1, "Login feature", "Create login to authenicate users","Robyn Harrison", 8, "To do", "" ));
+        totalHours.add(new Task(2, "Add Task feature", "Create Add Task feature to add task users", "Mike Smith", 10, "Doing", ""));
+        
+        assertEquals(18, Task.returnTotalHours(totalHours), "Total Hours should be 18");
+        
+        
+        
+        
+    }
 }

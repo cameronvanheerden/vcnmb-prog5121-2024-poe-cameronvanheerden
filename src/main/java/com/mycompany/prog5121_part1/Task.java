@@ -32,29 +32,10 @@ public class Task {
     
     public String createTaskID(){
         
-        String taskNamePart;
-        String developerNamePart;
-        
-        if (taskName.length() >= 2){
-            
-           taskNamePart = taskName.substring(0, 2).toUpperCase();
-        }
-        else{
-            
-            taskNamePart = taskName.toUpperCase();
-        }
-        
-        if(developerName.length()>= 3 ){
-            
-            developerNamePart = developerName.substring(developerName.length() - 3).toUpperCase();   
-        }
-        else{
-            
-            developerNamePart = developerName.toUpperCase();
-        }
-            
-        return taskNamePart+ ":" + taskNumber + ":" developerNamePart;
+        String namePart = taskName.length()>= 2? taskName.substring(0 , 2).toUpperCase(): taskName.toUpperCase();
+        String devName= developerName.length() >= 3? developerName.substring(developerName.length() - 3).toUpperCase(): developerName.toUpperCase();
              
+        return namePart + ":" + taskNumber + ":" + devName;
     }
     
     public String printTaskDetails(){
