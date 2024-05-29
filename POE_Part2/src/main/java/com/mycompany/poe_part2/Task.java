@@ -67,3 +67,18 @@ public class Task {
     }
     
 }
+/*
+References List
+Farrell, J., 2018. Java Programming. 9 ed. Boston: Cengage Learning.
+GeeksforGeeks, 2021. Creating an ArrayList with Multiple Object Types in Java. [Online] 
+Available at: https://www.geeksforgeeks.org/creating-an-arraylist-with-multiple-object-types-in-java/
+[Accessed 25 May 2024].
+GeeksforGeeks, 2023. Classes and Objects in Java. [Online] 
+Available at: https://www.geeksforgeeks.org/classes-objects-java/
+[Accessed 25 May 2024].
+GeeksforGeeks, 2024. Java Constructors. [Online] 
+Available at: https://www.geeksforgeeks.org/constructors-in-java/
+[Accessed 25 May 2024].
+Wanvig, R., 2021. PROG5212 LU1 -J OptionPane, Port Elizabeth: IIEVC School of Computer Science.
+Wanvig, R., 2022. Basic Unit testing example, Port Elizabeth: IIEVC School of Computer Science .
+*/
