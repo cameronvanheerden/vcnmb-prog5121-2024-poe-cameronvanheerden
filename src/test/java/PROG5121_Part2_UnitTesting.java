@@ -53,6 +53,9 @@ public class PROG5121_Part2_UnitTesting {
         totalHours.add(new Task(1, "Login feature", "Create login to authenicate users","Robyn Harrison", 8, "To do", "" ));
         totalHours.add(new Task(2, "Add Task feature", "Create Add Task feature to add task users", "Mike Smith", 10, "Doing", ""));
         
-        assertEquals(18, Task.returnTotalHours(totalHours), "Total Hours should be 18");       
+        int actual = Task.returnTotalHours(totalHours);
+        int expected = 18;
+        
+        assertEquals(expected, actual , "Total Hours should be 18");       
     }
 }
