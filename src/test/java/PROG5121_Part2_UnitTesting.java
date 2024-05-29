@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PROG5121_Part2_UnitTesting {
     
     @Test
-    public void testCheckTaskDescription_Success(){
+    void testCheckTaskDescription_Success(){
     
         Task testSuccess = new Task (1, "Login feature", "Create Login to authenticate users", "Robyn Harrison", 8,"To do", "" );    
         
@@ -20,7 +20,7 @@ public class PROG5121_Part2_UnitTesting {
     }
     
     @Test
-    public void testCheckTaskDescription_Failure(){
+    void testCheckTaskDescription_Failure(){
         
         Task testFailed = new Task(1, "Login feature", "The task description is intentionally going to be longer than 50 character",
                 "Robyn Harrison", 8, "To do", "");
@@ -33,7 +33,7 @@ public class PROG5121_Part2_UnitTesting {
     }
     
     @Test
-    public void testCreateTaskID(){
+    void testCreateTaskID(){
   
         Task testID = new Task(1, "Login feature", "Create Login to authenticate users", "Robyn Harrison", 8, "To do", "");
         
@@ -46,7 +46,7 @@ public class PROG5121_Part2_UnitTesting {
     }
     
     @Test
-    public void testReturnTotalHours(){
+    void testReturnTotalHours(){
         
         List <Task> totalHours = new ArrayList<>();
         
