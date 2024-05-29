@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 public class POE_Part2 {
 
        // Static variables to keep track of task count, status options, and a list to store tasks
-       static int taskCounter = 1;
+       static int taskCounter = 0;
        static String statusOptions[] = {"To do", "Done", "Doing"};//(Farrell, 2018)
        static List<Task> tasks = new ArrayList();//(GeeksforGeeks, 2021)
        
