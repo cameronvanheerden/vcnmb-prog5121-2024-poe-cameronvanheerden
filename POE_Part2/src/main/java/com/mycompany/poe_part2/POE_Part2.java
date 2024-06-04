@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 public class POE_Part2 {
 
        // Static variables to keep track of task count, status options, and a list to store tasks
-       static int taskCounter = 1;
+       static int taskCounter = 0;
        static String statusOptions[] = {"To do", "Done", "Doing"};//(Farrell, 2018)
        static List<Task> tasks = new ArrayList();//(GeeksforGeeks, 2021)
        
@@ -107,7 +107,7 @@ public class POE_Part2 {
         if(addingTasks.checkTaskDescription()){// Check if task description is valid and add task to the list
             tasks.add(addingTasks);//(GeeksforGeeks, 2021)
             taskCounter++;// Increment task counter for the next task//(Farrell, 2018)
-                JOptionPane.showMessageDialog(null, "Task captured successfully", "Task Description captured", JOptionPane.INFORMATION_MESSAGE);//(Wanvig, 2021)
+                JOptionPane.showMessageDialog(null, "Task captured successfully", "Task captured", JOptionPane.INFORMATION_MESSAGE);//(Wanvig, 2021)
         }
         else{
             JOptionPane.showMessageDialog(null, "Task description is required", "Error", JOptionPane.ERROR_MESSAGE);//(Wanvig, 2021)
