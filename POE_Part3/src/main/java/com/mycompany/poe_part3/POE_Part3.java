@@ -222,9 +222,14 @@ public class POE_Part3 {
     
     private static void showReport(){// Placeholder for showing report and shows user that the report is coming soon
 
-        
-        JOptionPane.showMessageDialog(null, "Coming soon....", "Report", JOptionPane.INFORMATION_MESSAGE);//(Wanvig, 2021)
-        
+    String reportOptions[] = {  "Full report",
+                                "Display Done Tasks",
+                                "Longest Duration Task", 
+                                "Search Task by Name", 
+                                "Search Tasks by Developer", 
+                                "Delete Task by Name", 
+                                "Back to Main Menu"};    
+    
     }
     
     private static boolean confirmQuit(){// Confirm with the user if they want to quit the program
