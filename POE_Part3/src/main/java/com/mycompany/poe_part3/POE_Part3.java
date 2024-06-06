@@ -230,6 +230,23 @@ public class POE_Part3 {
                                 "Delete Task by Name", 
                                 "Back to Main Menu"};    
     
+    int reportChoice;
+    boolean backToMenu = false;
+    
+    while(!backToMenu){
+        
+        reportChoice = JOptionPane.showOptionDialog(null, "Please select a report option:", "Report Menu", JOptionPane.DEFAULT_OPTION,
+                JOptionPane.INFORMATION_MESSAGE, null, reportOptions, reportOptions[0]);
+        
+    }
+    
+    }
+    
+    private static void displayFullReport(){
+        
+        StringBuilder report =  new StringBuilder("Full report of all Tasks: \n\n");
+        
+        
     }
     
     private static boolean confirmQuit(){// Confirm with the user if they want to quit the program
