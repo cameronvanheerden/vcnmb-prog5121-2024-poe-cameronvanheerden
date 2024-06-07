@@ -261,6 +261,13 @@ public class POE_Part3 {
         JOptionPane.showMessageDialog(null, report.toString(), "Full Report", JOptionPane.INFORMATION_MESSAGE);
     }
     
+    private static void displayDoneTasks(){
+        
+        
+        
+        
+    }
+    
     private static boolean confirmQuit(){// Confirm with the user if they want to quit the program
         
         int confirmQuit = JOptionPane.showConfirmDialog(null, "Are you sure you would like to exit the program?",
