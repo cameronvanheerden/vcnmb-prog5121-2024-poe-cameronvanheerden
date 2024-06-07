@@ -238,6 +238,13 @@ public class POE_Part3 {
         reportChoice = JOptionPane.showOptionDialog(null, "Please select a report option:", "Report Menu", JOptionPane.DEFAULT_OPTION,
                 JOptionPane.INFORMATION_MESSAGE, null, reportOptions, reportOptions[0]);
         
+        switch(reportChoice){
+            case 0: displayFullReport();
+            break;
+            
+            
+        }
+        
     }
     
     }
@@ -246,7 +253,12 @@ public class POE_Part3 {
         
         StringBuilder report =  new StringBuilder("Full report of all Tasks: \n\n");
         
+        for(Task task: tasks){
+            
+            report.append(task.printTaskDetails()).append("\n\n");
+        }
         
+        JOptionPane.showMessageDialog(null, report.toString(), "Full Report", JOptionPane.INFORMATION_MESSAGE);
     }
     
     private static boolean confirmQuit(){// Confirm with the user if they want to quit the program
