@@ -10,6 +10,7 @@ public class POE_Part3 {
        static int taskCounter = 0;
        static String statusOptions[] = {"To do", "Done", "Doing"};//(Farrell, 2018)
        static List<Task> tasks = new ArrayList();//(GeeksforGeeks, 2021)
+       static List<String> taskStatusArray = new ArrayList();
        
     public static void main(String[] args) {
         int choice;
@@ -262,6 +263,8 @@ public class POE_Part3 {
     }
     
     private static void displayDoneTasks(){
+        
+        StringBuilder doneTasks = new StringBuilder("Tasks that have been completed: \n");
         
         
         
