@@ -254,11 +254,13 @@ public class POE_Part3 {
             
             if(taskStatusArray.get(i).equals("Done")){
                 
-                doneTasks.append("Developer: ").append(str)
-                
-                
+                doneTasks.append("Developer: ").append(developerArray.get(i))
+                        .append(", Task Name: ").append(taskNameArray.get(i))
+                        .append(", Task Duration: ").append(taskDurationArray.get(i))
+                        .append("\n");   
             } 
         }
+        JOptionPane.showMessageDialog(null, doneTasks.toString(), "Done Tasks", JOptionPane.INFORMATION_MESSAGE);
     }   
      
     private static boolean confirmQuit(){// Confirm with the user if they want to quit the program
