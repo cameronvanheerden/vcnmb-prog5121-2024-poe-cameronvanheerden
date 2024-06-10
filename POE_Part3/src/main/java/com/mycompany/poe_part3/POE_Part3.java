@@ -240,7 +240,18 @@ public class POE_Part3 {
             
             case 3: searchTaskByName();
             break;
-        
+            
+            case 4: searchTaskByDeveloper();
+            break;
+            
+            case 5: deleteTaskNames();
+            break;
+            
+            case 6: backToMenu = true;
+            break;
+            
+            default: 
+                JOptionPane.showMessageDialog(null, "Invalid choice", "Please Select again", JOptionPane.ERROR_MESSAGE);
         }
         
     }
@@ -253,7 +264,7 @@ public class POE_Part3 {
         
         for(Task task: tasks){
             
-            report.append(task.printTaskDetails()).append("\n\n");
+            report.append(task.printTaskDetails()).append("\n");
         }
         
         JOptionPane.showMessageDialog(null, report.toString(), "Full Report", JOptionPane.INFORMATION_MESSAGE);
@@ -261,7 +272,7 @@ public class POE_Part3 {
     
     private static void displayDoneTasks(){
         
-        StringBuilder doneTasks = new StringBuilder("Tasks that have been completed: \n");
+        StringBuilder doneTasks = new StringBuilder("Tasks that have been completed: \n\n");
         
         for(int i = 0; i < taskStatusArray.size(); i++){
             
@@ -287,7 +298,7 @@ public class POE_Part3 {
             }
         }
         
-        JOptionPane.showMessageDialog(null, "Developer: " + developerArray.get(maxDurationIndex) + "\nTask Duration: "+ taskDurationArray.get(maxDurationIndex),
+        JOptionPane.showMessageDialog(null, "Developer: " + developerArray.get(maxDurationIndex) + ", Task Duration: "+ taskDurationArray.get(maxDurationIndex),
                 "Longest Duration Task", JOptionPane.INFORMATION_MESSAGE);
     }
     
@@ -298,12 +309,58 @@ public class POE_Part3 {
         
         for(int i = 0; i < taskNameArray.size(); i++){
             if(taskNameArray.get(i).equalsIgnoreCase(taskName)){
-                JOptionPane.showMessageDialog(null, "Task Name: " + taskNameArray.get(i) +"\nDeveloper Details: "  
-                       + developerArray.get(i) + "\n\nTask Status: " + taskStatusArray.get(i) , "Search Results", JOptionPane.INFORMATION_MESSAGE);
+                
+                JOptionPane.showMessageDialog(null, "Task Name: " + taskNameArray.get(i) +", Developer Details: "  
+                       + developerArray.get(i) + ", Task Status: " + taskStatusArray.get(i) , "Search Results", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
         }
         JOptionPane.showMessageDialog(null, "Task Name not found", "Search Results", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    private static void searchTaskByDeveloper(){
+        
+        String developerName = JOptionPane.showInputDialog(null, "Enter the developers first name and surname:", "Developer Details", JOptionPane.PLAIN_MESSAGE);
+        StringBuilder searchByDeveloper = new StringBuilder();
+        
+        for(int i = 0; i < developerArray.size(); i++){
+            
+            if(developerArray.get(i).equalsIgnoreCase(developerName)){
+    
+                searchByDeveloper.append("Task Name: ").append(taskNameArray.get(i)).append("Task Status: ")
+                        .append(taskStatusArray.get(i)).append("\n");  
+            } 
+        }
+        if(searchByDeveloper.length()==0){
+            
+          JOptionPane.showMessageDialog(null, "No tasks found by this developer", "Search invalid", JOptionPane.ERROR_MESSAGE); 
+        }
+        else{
+            JOptionPane.showMessageDialog(null, searchByDeveloper.toString(), "Search Results", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
+    private static void deleteTaskNames(){
+        
+        String taskName = JOptionPane.showInputDialog(null, "Enter the Task Name you would like to delete:", "Delete Task", JOptionPane.PLAIN_MESSAGE);
+        
+        for(int i = 0; i < taskNameArray.size(); i++){
+            
+            if(taskNameArray.get(i).equalsIgnoreCase(taskName)){
+                
+                developerArray.remove(i);
+                taskNameArray.remove(i);
+                taskIDArray.remove(i);
+                taskDurationArray.remove(i);
+                taskStatusArray.remove(i);
+                
+                JOptionPane.showMessageDialog(null, "Task has successfully been deleted", "Task Deleted", JOptionPane.INFORMATION_MESSAGE);
+                
+                return;
+            }
+            
+            JOptionPane.showMessageDialog(null, "Task has not been found", "Task not Found", JOptionPane.ERROR_MESSAGE);
+        }     
     }
      
     private static boolean confirmQuit(){// Confirm with the user if they want to quit the program
