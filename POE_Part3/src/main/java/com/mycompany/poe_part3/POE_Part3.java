@@ -17,7 +17,6 @@ public class POE_Part3 {
         boolean quit = false;
         
         displayWelcome();
-        displayName();// Display welcome messages  
         do{choice = displayMenu();// Main loop to display menu and perform actions based on user choice//(Farrell, 2018)
         
             switch(choice){//(Farrell, 2018)
@@ -49,26 +48,6 @@ public class POE_Part3 {
        JOptionPane.showMessageDialog(null, "Welcome to EasyKanban.", "Welcome", JOptionPane.INFORMATION_MESSAGE); //(Wanvig, 2021)
        
     }
-    
-    private static void displayName(){// Prompt user for their name and display welcome message with their name
-        String firstName = "";
-        String lastName = "";
-        
-        while(firstName.isBlank()||lastName.isBlank()){// Ensure user inputs both first and last names
-        firstName = JOptionPane.showInputDialog(null, "Please enter your first name:", "Login", JOptionPane.PLAIN_MESSAGE);//(Wanvig, 2021)
-        lastName = JOptionPane.showInputDialog(null, "Please enter your last name: ", "Login", JOptionPane.PLAIN_MESSAGE);//(Wanvig, 2021)
-        
-        if(firstName.isEmpty())// Show error messages if either input is empty
-            JOptionPane.showMessageDialog(null, "First name is required", "Error", JOptionPane.ERROR_MESSAGE);//(Wanvig, 2021)
-        
-        if(lastName.isEmpty())  
-           JOptionPane.showMessageDialog(null, "Last name is required", "Error", JOptionPane.ERROR_MESSAGE);//(Wanvig, 2021)
-        }
-        
-        JOptionPane.showMessageDialog(null, "Welcome, "+ firstName + " " + lastName+ ", to the adding Tasks feature!" , 
-                "Task feature", JOptionPane.PLAIN_MESSAGE); // Welcome message to the user to the program//(Wanvig, 2021)
-    }
-    
     
     private static int displayMenu(){// Display the main menu and return the user's choice
         String options[] = {"Add Task", "Show Report", "Quit"};//(Farrell, 2018)
@@ -243,7 +222,8 @@ public class POE_Part3 {
             case 0: displayFullReport();
             break;
             
-            
+            case 1: displayDoneTasks();
+            break;
         }
         
     }
@@ -266,11 +246,16 @@ public class POE_Part3 {
         
         StringBuilder doneTasks = new StringBuilder("Tasks that have been completed: \n");
         
-        
-        
-        
-    }
-    
+        for(int i = 0; i < taskStatusArray.size(); i++){
+            
+            if(taskStatusArray.get(i).equals("Done")){
+                
+                
+                
+            } 
+        }
+    }   
+     
     private static boolean confirmQuit(){// Confirm with the user if they want to quit the program
         
         int confirmQuit = JOptionPane.showConfirmDialog(null, "Are you sure you would like to exit the program?",
