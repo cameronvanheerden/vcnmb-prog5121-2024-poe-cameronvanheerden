@@ -229,6 +229,7 @@ public class POE_Part3 {
                 JOptionPane.INFORMATION_MESSAGE, null, reportOptions, reportOptions[0]);
         
         switch(reportChoice){
+            
             case 0: displayFullReport();
             break;
             
