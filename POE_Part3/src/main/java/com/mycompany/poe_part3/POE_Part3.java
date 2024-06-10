@@ -228,6 +228,9 @@ public class POE_Part3 {
             
             case 1: displayDoneTasks();
             break;
+            
+            case 2: displayTaskDuration();
+            break;
         }
         
     }
@@ -261,7 +264,21 @@ public class POE_Part3 {
             } 
         }
         JOptionPane.showMessageDialog(null, doneTasks.toString(), "Done Tasks", JOptionPane.INFORMATION_MESSAGE);
-    }   
+    }
+    
+    private static void displayTaskDuration(){
+        
+        int maxDurationIndex = 0;
+        
+        for(int i = 1; i < taskDurationArray.size(); i++){
+            if(taskDurationArray.get(i)> taskDurationArray.get(maxDurationIndex)){
+                
+                maxDurationIndex = i;
+            }
+        }
+        JOptionPane.showMessageDialog(null, "Developer: " + developerArray.get(maxDurationIndex) + "\nTask Duration: "+ taskDurationArray.get(maxDurationIndex),
+                "Longest Duration Task", JOptionPane.INFORMATION_MESSAGE);
+    }
      
     private static boolean confirmQuit(){// Confirm with the user if they want to quit the program
         
