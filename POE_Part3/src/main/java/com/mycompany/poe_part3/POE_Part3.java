@@ -10,7 +10,11 @@ public class POE_Part3 {
        static int taskCounter = 0;
        static String statusOptions[] = {"To do", "Done", "Doing"};//(Farrell, 2018)
        static List<Task> tasks = new ArrayList();//(GeeksforGeeks, 2021)
-       static List<String> taskStatusArray = new ArrayList();
+       static List<String> taskStatusArray = new ArrayList<>();
+       static List<String> developerArray = new ArrayList<>();
+       static List<String> taskNameArray = new ArrayList<>();
+       static List<String> taskIDArray = new ArrayList<>();
+       static List<Integer> taskDurationArray = new ArrayList<>(); 
        
     public static void main(String[] args) {
         int choice;
@@ -250,6 +254,7 @@ public class POE_Part3 {
             
             if(taskStatusArray.get(i).equals("Done")){
                 
+                doneTasks.append("Developer: ").append(str)
                 
                 
             } 
