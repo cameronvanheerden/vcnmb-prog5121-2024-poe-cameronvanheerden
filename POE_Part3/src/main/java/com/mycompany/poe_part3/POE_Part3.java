@@ -91,10 +91,16 @@ public class POE_Part3 {
         if(addingTasks.checkTaskDescription()){// Check if task description is valid and add task to the list
             tasks.add(addingTasks);//(GeeksforGeeks, 2021)
             taskCounter++;// Increment task counter for the next task//(Farrell, 2018)
-                JOptionPane.showMessageDialog(null, "Task captured successfully", "Task Description captured", JOptionPane.INFORMATION_MESSAGE);//(Wanvig, 2021)
+            developerArray.add(developerName);
+            taskNameArray.add(taskName);
+            taskIDArray.add(taskID);
+            taskDurationArray.add(taskDuration);
+            taskStatusArray.add(taskStatus);
+            
+                JOptionPane.showMessageDialog(null, "Task captured successfully", "Task captured", JOptionPane.INFORMATION_MESSAGE);//(Wanvig, 2021)
         }
         else{
-            JOptionPane.showMessageDialog(null, "Task description is required", "Error", JOptionPane.ERROR_MESSAGE);//(Wanvig, 2021)
+            JOptionPane.showMessageDialog(null, "Task not captured", "Error", JOptionPane.ERROR_MESSAGE);//(Wanvig, 2021)
         }
         
          displayTask(addingTasks);// Display task details
@@ -209,9 +215,9 @@ public class POE_Part3 {
     String reportOptions[] = {  "Full report",
                                 "Display Done Tasks",
                                 "Longest Duration Task", 
-                                "Search Task by Name", 
+                                "Search Task by Task Name", 
                                 "Search Tasks by Developer", 
-                                "Delete Task by Name", 
+                                "Delete Task using Task Name", 
                                 "Back to Main Menu"};    
     
     int reportChoice;
@@ -231,6 +237,10 @@ public class POE_Part3 {
             
             case 2: displayTaskDuration();
             break;
+            
+            case 3: searchTaskByName();
+            break;
+        
         }
         
     }
@@ -276,8 +286,24 @@ public class POE_Part3 {
                 maxDurationIndex = i;
             }
         }
+        
         JOptionPane.showMessageDialog(null, "Developer: " + developerArray.get(maxDurationIndex) + "\nTask Duration: "+ taskDurationArray.get(maxDurationIndex),
                 "Longest Duration Task", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    private static void searchTaskByName(){
+        
+        String taskName = JOptionPane.showInputDialog(null, "Enter the Task Name you would like to search for:",
+                "Search for Task", JOptionPane.PLAIN_MESSAGE);
+        
+        for(int i = 0; i < taskNameArray.size(); i++){
+            if(taskNameArray.get(i).equalsIgnoreCase(taskName)){
+                JOptionPane.showMessageDialog(null, "Task Name: " + taskNameArray.get(i) +"\nDeveloper Details: "  
+                       + developerArray.get(i) + "\n\nTask Status: " + taskStatusArray.get(i) , "Search Results", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+        }
+        JOptionPane.showMessageDialog(null, "Task Name not found", "Search Results", JOptionPane.ERROR_MESSAGE);
     }
      
     private static boolean confirmQuit(){// Confirm with the user if they want to quit the program

@@ -40,13 +40,13 @@ public class Task {
     
     public String printTaskDetails(){// Method to return a formatted string with all task details
         
-        return "-Task Status: " + taskStatus//(Farrell, 2018)
-               + "\n-Developer Details: " + developerName//(Farrell, 2018)
-               + "\n-Task Number: "+ taskNumber//(Farrell, 2018)
-               + "\n-Task Name: "+ taskName //(Farrell, 2018)
-               + "\n-Task Descrpition: "+taskDescription//(Farrell, 2018)
-               + "\n-Task ID: " + taskID//(Farrell, 2018)
-               + "\n-Task Duration: " + taskDuration + " hours";//(Farrell, 2018)
+        return "Task Status: " + taskStatus//(Farrell, 2018)
+               + "\nDeveloper Details: " + developerName//(Farrell, 2018)
+               + "\nTask Number: "+ taskNumber//(Farrell, 2018)
+               + "\nTask Name: "+ taskName //(Farrell, 2018)
+               + "\nTask Descrpition: "+taskDescription//(Farrell, 2018)
+               + "\nTask ID: " + taskID//(Farrell, 2018)
+               + "\nTask Duration: " + taskDuration + " hours";//(Farrell, 2018)
     } 
     
     public int gettaskDuration(){// Getter method for task duration
