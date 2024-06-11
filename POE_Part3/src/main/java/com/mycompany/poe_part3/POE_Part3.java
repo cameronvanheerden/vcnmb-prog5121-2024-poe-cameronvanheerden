@@ -10,11 +10,11 @@ public class POE_Part3 {
        static int taskCounter = 0;
        static String statusOptions[] = {"To do", "Done", "Doing"};//(Farrell, 2018)
        static List<Task> tasks = new ArrayList();//(GeeksforGeeks, 2021)
-       static List<String> taskStatusArray = new ArrayList<>();
-       static List<String> developerArray = new ArrayList<>();
-       static List<String> taskNameArray = new ArrayList<>();
-       static List<String> taskIDArray = new ArrayList<>();
-       static List<Integer> taskDurationArray = new ArrayList<>(); 
+       static List<String> taskStatusArray = new ArrayList<>();//List to store task statuses
+       static List<String> developerArray = new ArrayList<>();// List to store developer names
+       static List<String> taskNameArray = new ArrayList<>();// List to store task names
+       static List<String> taskIDArray = new ArrayList<>();// List to store task IDs
+       static List<Integer> taskDurationArray = new ArrayList<>(); // List to store task durations
        
     public static void main(String[] args) {
         int choice;
@@ -91,11 +91,11 @@ public class POE_Part3 {
         if(addingTasks.checkTaskDescription()){// Check if task description is valid and add task to the list
             tasks.add(addingTasks);//(GeeksforGeeks, 2021)
             taskCounter++;// Increment task counter for the next task//(Farrell, 2018)
-            developerArray.add(developerName);
-            taskNameArray.add(taskName);
-            taskIDArray.add(taskID);
-            taskDurationArray.add(taskDuration);
-            taskStatusArray.add(taskStatus);
+            developerArray.add(developerName);//Adds new developer name to the list to be stored
+            taskNameArray.add(taskName);//Adds new task name to the list to be store
+            taskIDArray.add(taskID);//Adds new task ID to list to be stored
+            taskDurationArray.add(taskDuration);//Adds new task duration to the list to be stored
+            taskStatusArray.add(taskStatus);//Adds new task statuses to the list to be stored
             
                 JOptionPane.showMessageDialog(null, "Task captured successfully", "Task captured", JOptionPane.INFORMATION_MESSAGE);//(Wanvig, 2021)
         }
@@ -210,7 +210,7 @@ public class POE_Part3 {
                                    "Task Details", JOptionPane.INFORMATION_MESSAGE);//(Wanvig, 2021)
     }
     
-    private static void showReport(){// Placeholder for showing report and shows user that the report is coming soon
+    private static void showReport(){//New show report method that displays options for the user to select
 
     String reportOptions[] = {  "Full report",
                                 "Display Done Tasks",
@@ -228,6 +228,7 @@ public class POE_Part3 {
         reportChoice = JOptionPane.showOptionDialog(null, "Please select a report option:", "Report Menu", JOptionPane.DEFAULT_OPTION,
                 JOptionPane.INFORMATION_MESSAGE, null, reportOptions, reportOptions[0]);
         
+        //Switch statement holds the methods that are going to be used when the user selects an option
         switch(reportChoice){
             
             case 0: displayFullReport();
@@ -259,7 +260,7 @@ public class POE_Part3 {
     
     }
     
-    private static void displayFullReport(){
+    private static void displayFullReport(){ // Display full report of all tasks
         
         StringBuilder report =  new StringBuilder("Full report of all Tasks: \n\n");
         
@@ -271,7 +272,7 @@ public class POE_Part3 {
         JOptionPane.showMessageDialog(null, report.toString(), "Full Report", JOptionPane.INFORMATION_MESSAGE);
     }
     
-    private static void displayDoneTasks(){
+    private static void displayDoneTasks(){// Display tasks that are marked as 'Done'
         
         StringBuilder doneTasks = new StringBuilder("Tasks that have been completed: \n\n");
         
@@ -288,7 +289,7 @@ public class POE_Part3 {
         JOptionPane.showMessageDialog(null, doneTasks.toString(), "Done Tasks", JOptionPane.INFORMATION_MESSAGE);
     }
     
-    private static void displayTaskDuration(){
+    private static void displayTaskDuration(){// Display the task with the longest duration
         
         int maxDurationIndex = 0;
         
@@ -303,7 +304,7 @@ public class POE_Part3 {
                 "Longest Duration Task", JOptionPane.INFORMATION_MESSAGE);
     }
     
-    private static void searchTaskByName(){
+    private static void searchTaskByName(){// Search and display task by name
         
         String taskName = JOptionPane.showInputDialog(null, "Enter the Task Name you would like to search for:",
                 "Search for Task", JOptionPane.PLAIN_MESSAGE);
@@ -319,7 +320,7 @@ public class POE_Part3 {
         JOptionPane.showMessageDialog(null, "Task Name not found", "Search Results", JOptionPane.ERROR_MESSAGE);
     }
     
-    private static void searchTaskByDeveloper(){
+    private static void searchTaskByDeveloper(){// Search and display tasks by developer name
         
         String developerName = JOptionPane.showInputDialog(null, "Enter the developers first name and surname:", "Developer Details", JOptionPane.PLAIN_MESSAGE);
         StringBuilder searchByDeveloper = new StringBuilder();
@@ -341,7 +342,7 @@ public class POE_Part3 {
         }
     }
     
-    private static void deleteTaskNames(){
+    private static void deleteTaskNames(){// Delete a task by name
         
         String taskName = JOptionPane.showInputDialog(null, "Enter the Task Name you would like to delete:", "Delete Task", JOptionPane.PLAIN_MESSAGE);
         
@@ -349,17 +350,18 @@ public class POE_Part3 {
             
             if(taskNameArray.get(i).equalsIgnoreCase(taskName)){
                 
-                developerArray.remove(i);
-                taskNameArray.remove(i);
-                taskIDArray.remove(i);
-                taskDurationArray.remove(i);
-                taskStatusArray.remove(i);
+                developerArray.remove(i);//Removes developer name at stored index
+                taskNameArray.remove(i);//Removes task name at stored index
+                taskIDArray.remove(i);//Removes task ID at stored index
+                taskDurationArray.remove(i);//Removes task duration at stored index
+                taskStatusArray.remove(i);//Removes task status at stored index
                 
+                //Returns the following message if the task has been deleted
                 JOptionPane.showMessageDialog(null, "Task has successfully been deleted", "Task Deleted", JOptionPane.INFORMATION_MESSAGE);
                 
                 return;
             }
-            
+            //If task wasnt found this message will be displayed
             JOptionPane.showMessageDialog(null, "Task has not been found", "Task not Found", JOptionPane.ERROR_MESSAGE);
         }     
     }
