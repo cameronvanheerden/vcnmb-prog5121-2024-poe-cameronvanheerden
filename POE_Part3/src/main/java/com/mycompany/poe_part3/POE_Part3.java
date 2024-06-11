@@ -300,7 +300,12 @@ public class POE_Part3 {
             }
         }
         
-        JOptionPane.showMessageDialog(null, "Developer: " + developerArray.get(maxDurationIndex) + ", Task Duration: "+ taskDurationArray.get(maxDurationIndex),
+        String taskDetails = "Task with the longest duration: \n\n"
+                + "Developer: " + developerArray.get(maxDurationIndex) 
+                + "Task Name: " + taskNameArray.get(maxDurationIndex)
+                + ", Task Duration: "+ taskDurationArray.get(maxDurationIndex);
+        
+        JOptionPane.showMessageDialog(null, taskDetails,
                 "Longest Duration Task", JOptionPane.INFORMATION_MESSAGE);
     }
     
@@ -309,15 +314,24 @@ public class POE_Part3 {
         String taskName = JOptionPane.showInputDialog(null, "Enter the Task Name you would like to search for:",
                 "Search for Task", JOptionPane.PLAIN_MESSAGE);
         
+        StringBuilder searchedName = new StringBuilder("Search results for Task Name: " + taskName + "\n\n");
+        
         for(int i = 0; i < taskNameArray.size(); i++){
             if(taskNameArray.get(i).equalsIgnoreCase(taskName)){
-                
-                JOptionPane.showMessageDialog(null, "Task Name: " + taskNameArray.get(i) +", Developer Details: "  
-                       + developerArray.get(i) + ", Task Status: " + taskStatusArray.get(i) , "Search Results", JOptionPane.INFORMATION_MESSAGE);
-                return;
+                searchedName.append("Developer: ").append(developerArray.get(i))
+                        .append(", Task Name: ").append(taskNameArray.get(i))
+                        .append(", Task Duration: ").append(taskDurationArray.get(i))
+                        .append(", Task Status: ").append(taskStatusArray.get(i))
+                        .append("\n");  
             }
         }
-        JOptionPane.showMessageDialog(null, "Task Name not found", "Search Results", JOptionPane.ERROR_MESSAGE);
+        if(taskName.isEmpty()){
+            
+            JOptionPane.showMessageDialog(null, "Task Name has not been found", "Invalid search", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+        JOptionPane.showMessageDialog(null, searchedName.toString(), "Search Results", JOptionPane.INFORMATION_MESSAGE);
+    }
     }
     
     private static void searchTaskByDeveloper(){// Search and display tasks by developer name
@@ -329,11 +343,14 @@ public class POE_Part3 {
             
             if(developerArray.get(i).equalsIgnoreCase(developerName)){
     
-                searchByDeveloper.append("Task Name: ").append(taskNameArray.get(i)).append("Task Status: ")
-                        .append(taskStatusArray.get(i)).append("\n");  
+                searchByDeveloper.append("Developer: ").append(developerArray.get(i))
+                        .append(", Task Name: ").append(taskNameArray.get(i))
+                        .append(", Task Duration:").append(taskDurationArray.get(i))
+                        .append(", Task Status: ").append(taskStatusArray.get(i))
+                        .append("\n");  
             } 
         }
-        if(searchByDeveloper.length()==0){
+        if(searchByDeveloper.isEmpty()){
             
           JOptionPane.showMessageDialog(null, "No tasks found by this developer", "Search invalid", JOptionPane.ERROR_MESSAGE); 
         }
@@ -356,13 +373,15 @@ public class POE_Part3 {
                 taskDurationArray.remove(i);//Removes task duration at stored index
                 taskStatusArray.remove(i);//Removes task status at stored index
                 
+     
                 //Returns the following message if the task has been deleted
-                JOptionPane.showMessageDialog(null, "Task has successfully been deleted", "Task Deleted", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, taskName + " Task has successfully been deleted",
+                        "Task Deleted", JOptionPane.INFORMATION_MESSAGE);
                 
                 return;
             }
             //If task wasnt found this message will be displayed
-            JOptionPane.showMessageDialog(null, "Task has not been found", "Task not Found", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, taskName +" Task has not been found", "Task not Found", JOptionPane.ERROR_MESSAGE);
         }     
     }
     
