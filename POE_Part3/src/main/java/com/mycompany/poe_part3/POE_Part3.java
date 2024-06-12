@@ -387,11 +387,15 @@ public class POE_Part3 {
     
     private static void populateTestData(){
         
+        developerArray.add("Mike Smith");
+        taskNameArray.add("Create Login");
+        taskDurationArray.add(5);
+        taskStatusArray.add("To Do");
         
         
         
     }
-     
+   
     private static boolean confirmQuit(){// Confirm with the user if they want to quit the program
         
         int confirmQuit = JOptionPane.showConfirmDialog(null, "Are you sure you would like to exit the program?",
