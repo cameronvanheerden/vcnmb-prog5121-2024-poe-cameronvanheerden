@@ -262,7 +262,7 @@ public class POE_Part3 {
     
     private static void displayFullReport(){ // Display full report of all tasks
         
-        StringBuilder report =  new StringBuilder("Full report of all Tasks: \n\n");
+        StringBuilder report =  new StringBuilder("Full report of all Tasks: \n");
         
         for(Task task: tasks){
             
@@ -274,16 +274,16 @@ public class POE_Part3 {
     
     private static void displayDoneTasks(){// Display tasks that are marked as 'Done'
         
-        StringBuilder doneTasks = new StringBuilder("Tasks that have been completed: \n\n");
+        StringBuilder doneTasks = new StringBuilder("Tasks that have been completed: \n");
         
         for(int i = 0; i < taskStatusArray.size(); i++){
             
             if(taskStatusArray.get(i).equals("Done")){//If statement check if the task status at specific index is equal to done
                 
-                doneTasks.append("Developer: ").append(developerArray.get(i))
-                        .append(", Task Name: ").append(taskNameArray.get(i))
-                        .append(", Task Duration: ").append(taskDurationArray.get(i))
-                        .append("\n");   
+                doneTasks.append("Developer: ").append(developerArray.get(i)).append("\n")
+                        .append("Task Name: ").append(taskNameArray.get(i)).append("\n")
+                        .append("Task Duration: ").append(taskDurationArray.get(i))
+                        .append("\n\n");   
             } 
         }
         JOptionPane.showMessageDialog(null, doneTasks.toString(), "Done Tasks", JOptionPane.INFORMATION_MESSAGE);//Displays tasks with the status done
@@ -300,10 +300,10 @@ public class POE_Part3 {
             }
         }
         
-        String taskDetails = "Task with the longest duration: \n\n"
-                + "Developer: " + developerArray.get(maxDurationIndex)//Gets the element stored at the specific index from the developer array
-                + "Task Name: " + taskNameArray.get(maxDurationIndex)//Gets the element stored at the specific index from the task name array
-                + ", Task Duration: "+ taskDurationArray.get(maxDurationIndex);//Gets the element stored at the specific index from the task duration array
+        String taskDetails = "Task with the longest duration: \n"
+                + "\nDeveloper: " + developerArray.get(maxDurationIndex)//Gets the element stored at the specific index from the developer array
+                + "\nTask Name: " + taskNameArray.get(maxDurationIndex)//Gets the element stored at the specific index from the task name array
+                + "\nTask Duration: "+ taskDurationArray.get(maxDurationIndex);//Gets the element stored at the specific index from the task duration array
         
         JOptionPane.showMessageDialog(null, taskDetails,
                 "Longest Duration Task", JOptionPane.INFORMATION_MESSAGE);//Displays task with longest duration
@@ -314,15 +314,15 @@ public class POE_Part3 {
         String taskName = JOptionPane.showInputDialog(null, "Enter the Task Name you would like to search for:",
                 "Search for Task", JOptionPane.PLAIN_MESSAGE);
         
-        StringBuilder searchedName = new StringBuilder("Search results for Task Name: " + taskName + "\n\n");
+        StringBuilder searchedName = new StringBuilder("Search results for Task Name: " + taskName + "\n");
         
         for(int i = 0; i < taskNameArray.size(); i++){
             if(taskNameArray.get(i).equalsIgnoreCase(taskName)){
-                searchedName.append("Developer: ").append(developerArray.get(i))
-                        .append(", Task Name: ").append(taskNameArray.get(i))
-                        .append(", Task Duration: ").append(taskDurationArray.get(i))
-                        .append(", Task Status: ").append(taskStatusArray.get(i))
-                        .append("\n");  
+                searchedName.append("Developer: ").append(developerArray.get(i)).append("\n")
+                        .append("Task Name: ").append(taskNameArray.get(i)).append("\n")
+                        .append("Task Duration: ").append(taskDurationArray.get(i)).append("\n")
+                        .append("Task Status: ").append(taskStatusArray.get(i))
+                        .append("\n\n");  
             }
         }
         if(taskName.length()== 0){//If task name is empty the following message will appear
@@ -343,11 +343,11 @@ public class POE_Part3 {
             
             if(developerArray.get(i).equalsIgnoreCase(developerName)){
     
-                searchByDeveloper.append("Developer: ").append(developerArray.get(i))
-                        .append(", Task Name: ").append(taskNameArray.get(i))
-                        .append(", Task Duration:").append(taskDurationArray.get(i))
-                        .append(", Task Status: ").append(taskStatusArray.get(i))
-                        .append("\n");  
+                searchByDeveloper.append("Developer: ").append(developerArray.get(i)).append("\n")
+                        .append("Task Name: ").append(taskNameArray.get(i)).append("\n")
+                        .append("Task Duration:").append(taskDurationArray.get(i)).append("\n")
+                        .append("Task Status: ").append(taskStatusArray.get(i))
+                        .append("\n\n");  
             } 
         }
         if(developerName.length()== 0){//Checks if the is empty and the following message will appear or if the developer is not found

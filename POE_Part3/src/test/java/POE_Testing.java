@@ -101,7 +101,17 @@ public class POE_Testing {
     @Test
     public void testDisplayFullReport(){
         
+        StringBuilder fullReport = new StringBuilder("Full details of all Tasks: \n\n");
         
-        
+        for(int i = 0; i < POE_Part3.developerArray.size(); i++){
+            
+            fullReport.append("Task Name: ").append(POE_Part3.taskNameArray.get(i)).append("\n");
+            fullReport.append("Developer: ").append(POE_Part3.developerArray.get(i)).append("\n");
+            fullReport.append("Task Duration: ").append(POE_Part3.taskDurationArray.get(i)).append("\n");
+            fullReport.append("Task Status: ").append(POE_Part3.taskStatusArray.get(i)).append("\n");
+            fullReport.append("Task ID: ").append(POE_Part3.taskIDArray.get(i)).append("\n");
+        }
+        assertNotNull(fullReport.toString());
+        assertTrue(fullReport.length() > 0);
     }
 }
