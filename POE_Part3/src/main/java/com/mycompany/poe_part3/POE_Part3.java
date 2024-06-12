@@ -392,8 +392,21 @@ public class POE_Part3 {
         taskDurationArray.add(5);
         taskStatusArray.add("To Do");
         
+        developerArray.add("Edward Harrison");
+        taskNameArray.add("Create Add Features");
+        taskDurationArray.add(8);
+        taskStatusArray.add("Doing");
         
+        developerArray.add("Samantha Paulson");
+        taskNameArray.add("Create Reports");
+        taskDurationArray.add(2);
+        taskStatusArray.add("Done");
         
+        developerArray.add("Glenda Oberholzer");
+        taskNameArray.add("Add Arrays");
+        taskDurationArray.add(11);
+        taskStatusArray.add("To Do");
+    
     }
    
     private static boolean confirmQuit(){// Confirm with the user if they want to quit the program
