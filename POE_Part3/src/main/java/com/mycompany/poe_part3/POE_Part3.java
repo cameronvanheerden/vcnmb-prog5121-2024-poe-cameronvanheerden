@@ -362,6 +362,7 @@ public class POE_Part3 {
     private static void deleteTaskNames(){// Delete a task by name
         
         String taskName = JOptionPane.showInputDialog(null, "Enter the Task Name you would like to delete:", "Delete Task", JOptionPane.PLAIN_MESSAGE);
+        boolean found = false;         
         
         for(int i = 0; i < taskNameArray.size(); i++){
             
@@ -378,10 +379,12 @@ public class POE_Part3 {
                 JOptionPane.showMessageDialog(null, taskName + " Task has successfully been deleted",
                         "Task Deleted", JOptionPane.INFORMATION_MESSAGE);
                 
+                found = true;
                 return;
             }
             //If task wasnt found this message will be displayed
-            JOptionPane.showMessageDialog(null, taskName +" Task has not been found", "Task not Found", JOptionPane.ERROR_MESSAGE);
+            if(!found)
+                JOptionPane.showMessageDialog(null, taskName +" Task has not been found", "Task not Found", JOptionPane.ERROR_MESSAGE);
         }     
     }
     

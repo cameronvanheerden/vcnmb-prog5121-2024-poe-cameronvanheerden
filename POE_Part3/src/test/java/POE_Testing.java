@@ -97,5 +97,11 @@ public class POE_Testing {
         assertTrue(found);
         assertFalse(POE_Part3.taskNameArray.contains(taskName));
     }
-
+    
+    @Test
+    public void testDisplayFullReport(){
+        
+        
+        
+    }
 }
