@@ -386,7 +386,7 @@ public class POE_Part3 {
     }
     
     //Method that is used in unit test which adds data to an array to be tested in unit test
-    private static void populateTestData(){
+    public static void populateTestData(){
         
         developerArray.add("Mike Smith");
         taskNameArray.add("Create Login");
