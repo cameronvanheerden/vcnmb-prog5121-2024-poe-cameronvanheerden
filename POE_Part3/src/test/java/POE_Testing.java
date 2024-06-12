@@ -38,5 +38,13 @@ public class POE_Testing {
         assertEquals("Glenda Oberholzer", POE_Part3.developerArray.get(maxDurationIndex));
         assertEquals(11, (int )POE_Part3.taskDurationArray.get(maxDurationIndex));
     }
+    
+    public void testSearchByName(){
+        
+        String taskName = "Create Login";
+        
+        
+        
+    }
 
 }

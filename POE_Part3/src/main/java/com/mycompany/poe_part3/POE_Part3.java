@@ -325,7 +325,7 @@ public class POE_Part3 {
                         .append("\n");  
             }
         }
-        if(taskName.isEmpty()){//If task name is empty the following message will appear
+        if(taskName.length()== 0){//If task name is empty the following message will appear
             
             JOptionPane.showMessageDialog(null, "Task Name has not been found", "Invalid search", JOptionPane.ERROR_MESSAGE);
         }
@@ -350,7 +350,7 @@ public class POE_Part3 {
                         .append("\n");  
             } 
         }
-        if(developerName.isEmpty()){//Checks if the is empty and the following message will appear or if the developer is not found
+        if(developerName.length()== 0){//Checks if the is empty and the following message will appear or if the developer is not found
             
           JOptionPane.showMessageDialog(null, "No tasks found by this developer", "Search invalid", JOptionPane.ERROR_MESSAGE); 
         }
