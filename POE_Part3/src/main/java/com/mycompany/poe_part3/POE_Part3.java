@@ -10,11 +10,11 @@ public class POE_Part3 {
        static int taskCounter = 0;
        static String statusOptions[] = {"To do", "Done", "Doing"};//(Farrell, 2018)
        static List<Task> tasks = new ArrayList();//(GeeksforGeeks, 2021)
-       static List<String> taskStatusArray = new ArrayList<>();//List to store task statuses
-       static List<String> developerArray = new ArrayList<>();// List to store developer names
-       static List<String> taskNameArray = new ArrayList<>();// List to store task names
-       static List<String> taskIDArray = new ArrayList<>();// List to store task IDs
-       static List<Integer> taskDurationArray = new ArrayList<>(); // List to store task durations
+       public static List<String> taskStatusArray = new ArrayList<>();//List to store task statuses
+       public static List<String> developerArray = new ArrayList<>();// List to store developer names
+       public static List<String> taskNameArray = new ArrayList<>();// List to store task names
+       public static List<String> taskIDArray = new ArrayList<>();// List to store task IDs
+       public static List<Integer> taskDurationArray = new ArrayList<>(); // List to store task durations
        
     public static void main(String[] args) {
         int choice;
