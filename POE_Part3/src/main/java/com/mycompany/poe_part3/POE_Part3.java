@@ -223,7 +223,7 @@ public class POE_Part3 {
     int reportChoice;
     boolean backToMenu = false;
     
-    while(!backToMenu){
+    while(!backToMenu){//Loop continues until back to menu has been selected by the usefr
         
         reportChoice = JOptionPane.showOptionDialog(null, "Please select a report option:", "Report Menu", JOptionPane.DEFAULT_OPTION,
                 JOptionPane.INFORMATION_MESSAGE, null, reportOptions, reportOptions[0]);
@@ -269,7 +269,7 @@ public class POE_Part3 {
             report.append(task.printTaskDetails()).append("\n");
         }
         
-        JOptionPane.showMessageDialog(null, report.toString(), "Full Report", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, report.toString(), "Full Report", JOptionPane.INFORMATION_MESSAGE);//Displays full report of all tasks created
     }
     
     private static void displayDoneTasks(){// Display tasks that are marked as 'Done'
@@ -278,7 +278,7 @@ public class POE_Part3 {
         
         for(int i = 0; i < taskStatusArray.size(); i++){
             
-            if(taskStatusArray.get(i).equals("Done")){
+            if(taskStatusArray.get(i).equals("Done")){//If statement check if the task status at specific index is equal to done
                 
                 doneTasks.append("Developer: ").append(developerArray.get(i))
                         .append(", Task Name: ").append(taskNameArray.get(i))
@@ -286,7 +286,7 @@ public class POE_Part3 {
                         .append("\n");   
             } 
         }
-        JOptionPane.showMessageDialog(null, doneTasks.toString(), "Done Tasks", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, doneTasks.toString(), "Done Tasks", JOptionPane.INFORMATION_MESSAGE);//Displays tasks with the status done
     }
     
     private static void displayTaskDuration(){// Display the task with the longest duration
@@ -301,12 +301,12 @@ public class POE_Part3 {
         }
         
         String taskDetails = "Task with the longest duration: \n\n"
-                + "Developer: " + developerArray.get(maxDurationIndex) 
-                + "Task Name: " + taskNameArray.get(maxDurationIndex)
-                + ", Task Duration: "+ taskDurationArray.get(maxDurationIndex);
+                + "Developer: " + developerArray.get(maxDurationIndex)//Gets the element stored at the specific index from the developer array
+                + "Task Name: " + taskNameArray.get(maxDurationIndex)//Gets the element stored at the specific index from the task name array
+                + ", Task Duration: "+ taskDurationArray.get(maxDurationIndex);//Gets the element stored at the specific index from the task duration array
         
         JOptionPane.showMessageDialog(null, taskDetails,
-                "Longest Duration Task", JOptionPane.INFORMATION_MESSAGE);
+                "Longest Duration Task", JOptionPane.INFORMATION_MESSAGE);//Displays task with longest duration
     }
     
     private static void searchTaskByName(){// Search and display task by name
@@ -325,12 +325,12 @@ public class POE_Part3 {
                         .append("\n");  
             }
         }
-        if(taskName.isEmpty()){
+        if(taskName.isEmpty()){//If task name is empty the following message will appear
             
             JOptionPane.showMessageDialog(null, "Task Name has not been found", "Invalid search", JOptionPane.ERROR_MESSAGE);
         }
         else{
-        JOptionPane.showMessageDialog(null, searchedName.toString(), "Search Results", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, searchedName.toString(), "Search Results", JOptionPane.INFORMATION_MESSAGE);//displays the task that was searched
     }
     }
     
@@ -350,11 +350,11 @@ public class POE_Part3 {
                         .append("\n");  
             } 
         }
-        if(searchByDeveloper.isEmpty()){
+        if(developerName.isEmpty()){//Checks if the is empty and the following message will appear or if the developer is not found
             
           JOptionPane.showMessageDialog(null, "No tasks found by this developer", "Search invalid", JOptionPane.ERROR_MESSAGE); 
         }
-        else{
+        else{//Displays tasks from specified developer searched
             JOptionPane.showMessageDialog(null, searchByDeveloper.toString(), "Search Results", JOptionPane.INFORMATION_MESSAGE);
         }
     }
