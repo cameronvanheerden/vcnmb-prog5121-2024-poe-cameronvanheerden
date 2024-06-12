@@ -395,21 +395,25 @@ public class POE_Part3 {
         taskNameArray.add("Create Login");
         taskDurationArray.add(5);
         taskStatusArray.add("To Do");
+        taskIDArray.add("CR:0:ITH");
         
         developerArray.add("Edward Harrison");
         taskNameArray.add("Create Add Features");
         taskDurationArray.add(8);
         taskStatusArray.add("Doing");
+        taskIDArray.add("CR:1:SON");
         
         developerArray.add("Samantha Paulson");
         taskNameArray.add("Create Reports");
         taskDurationArray.add(2);
         taskStatusArray.add("Done");
+        taskIDArray.add("CR:2:SON");
         
         developerArray.add("Glenda Oberholzer");
         taskNameArray.add("Add Arrays");
         taskDurationArray.add(11);
         taskStatusArray.add("To Do");
+        taskIDArray.add("AD:3:ZER");
     
     }
    

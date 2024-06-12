@@ -103,7 +103,15 @@ public class POE_Testing {
         
         StringBuilder fullReport = new StringBuilder("Full details of all Tasks: \n\n");
         
-        for(int i = 0; i < POE_Part3.developerArray.size(); i++){
+        int arraySize = POE_Part3.developerArray.size();
+        
+        assertEquals(arraySize, POE_Part3.taskNameArray.size());
+        assertEquals(arraySize, POE_Part3.developerArray.size());
+        assertEquals(arraySize, POE_Part3.taskDurationArray.size());
+        assertEquals(arraySize, POE_Part3.taskStatusArray.size());
+        assertEquals(arraySize, POE_Part3.taskIDArray.size());
+        
+        for(int i = 0; i < arraySize; i++){
             
             fullReport.append("Task Name: ").append(POE_Part3.taskNameArray.get(i)).append("\n");
             fullReport.append("Developer: ").append(POE_Part3.developerArray.get(i)).append("\n");
