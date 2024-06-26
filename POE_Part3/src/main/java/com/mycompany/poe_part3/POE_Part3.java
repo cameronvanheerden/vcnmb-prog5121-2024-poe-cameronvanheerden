@@ -262,11 +262,11 @@ public class POE_Part3 {
     
     private static void displayFullReport(){ // Display full report of all tasks
         
-        StringBuilder report =  new StringBuilder("Full report of all Tasks: \n");//(GeeksforGeeks, 2023)
+        StringBuilder report =  new StringBuilder("Full report of all Tasks: \n\n");//(GeeksforGeeks, 2023)
         
         for(Task task: tasks){// (Farrell, 2018)
             
-            report.append(task.printTaskDetails()).append("\n");
+            report.append(task.printTaskDetails()).append("\n\n");
         }
         
         JOptionPane.showMessageDialog(null, report.toString(), "Full Report", JOptionPane.INFORMATION_MESSAGE);//Displays full report of all tasks created
@@ -372,20 +372,21 @@ public class POE_Part3 {
                 taskNameArray.remove(i);//Removes task name at stored index (GeeksforGeeks, 2024)(GeeksforGeeks, 2023)
                 taskIDArray.remove(i);//Removes task ID at stored index(GeeksforGeeks, 2024)(GeeksforGeeks, 2023)
                 taskDurationArray.remove(i);//Removes task duration at stored index(GeeksforGeeks, 2024)(GeeksforGeeks, 2023)
-                taskStatusArray.remove(i);//Removes task status at stored index(GeeksforGeeks, 2024)(GeeksforGeeks, 2023)
-                
+                taskStatusArray.remove(i);//Removes task status at stored index(GeeksforGeeks, 2024)(GeeksforGeeks, 2023)  
+                i--;
      
                 //Returns the following message if the task has been deleted
                 JOptionPane.showMessageDialog(null, taskName + " Task has successfully been deleted",
                         "Task Deleted", JOptionPane.INFORMATION_MESSAGE);// (Farrell, 2018)
                 
                 found = true;// (Farrell, 2018)
-                return;// (Farrell, 2018)
+                break;  
             }
+        }
             //If task wasnt found this message will be displayed
-            if(!found)
-                JOptionPane.showMessageDialog(null, taskName +" Task has not been found", "Task not Found", JOptionPane.ERROR_MESSAGE);// (Farrell, 2018)
-        }     
+        if(!found)
+            JOptionPane.showMessageDialog(null, taskName +" Task has not been found", "Task not Found", JOptionPane.ERROR_MESSAGE);// (Farrell, 2018)
+        
     }
     
     //Method that is used in unit test which adds data to an array to be tested in unit test
@@ -431,19 +432,25 @@ public class POE_Part3 {
         JOptionPane.showMessageDialog(null, "Thank you for using my adding Tasks feature program", "Goodbye", JOptionPane.INFORMATION_MESSAGE);//(Wanvig, 2021)
     }
 }
-
 /*
 References List
 Farrell, J., 2018. Java Programming. 9 ed. Boston: Cengage Learning.
-GeeksforGeeks, 2021. Creating an ArrayList with Multiple Object Types in Java. [Online] 
-Available at: https://www.geeksforgeeks.org/creating-an-arraylist-with-multiple-object-types-in-java/
-[Accessed 25 May 2024].
-GeeksforGeeks, 2023. Classes and Objects in Java. [Online] 
-Available at: https://www.geeksforgeeks.org/classes-objects-java/
-[Accessed 25 May 2024].
-GeeksforGeeks, 2024. Java Constructors. [Online] 
-Available at: https://www.geeksforgeeks.org/constructors-in-java/
-[Accessed 25 May 2024].
-Wanvig, R., 2021. PROG5212 LU1 -J OptionPane, Port Elizabeth: IIEVC School of Computer Science.
-Wanvig, R., 2022. Basic Unit testing example, Port Elizabeth: IIEVC School of Computer Science .
+GeeksforGeeks, 2023. ArrayList get(index) Method in Java with Examples. [Online] 
+Available at: https://www.geeksforgeeks.org/arraylist-get-method-java-examples/
+[Accessed 25 June 2024].
+GeeksforGeeks, 2023. Removing Element from the Specified Index in Java ArrayList. [Online] 
+Available at: https://www.geeksforgeeks.org/removing-element-from-the-specified-index-in-java-arraylist/
+[Accessed 25 June 2024].
+GeeksforGeeks, 2023. String Arrays in Java. [Online] 
+Available at: https://www.geeksforgeeks.org/string-arrays-in-java/
+[Accessed 25 June 2024].
+GeeksforGeeks, 2023. StringBuilder append() Method in Java With Examples. [Online] 
+Available at: https://www.geeksforgeeks.org/stringbuilder-append-method-in-java-with-examples/
+[Accessed 25 June 2024].
+GeeksforGeeks, 2023. StringBuilder Class in Java with Examples. [Online] 
+Available at: https://www.geeksforgeeks.org/stringbuilder-class-in-java-with-examples/
+[Accessed 25 June 2024].
+GeeksforGeeks, 2024. ArrayList in Java. [Online] 
+Available at: https://www.geeksforgeeks.org/arraylist-in-java/?ref=ml_lbp
+[Accessed 25 June 2024].
 */

@@ -124,6 +124,24 @@ public class POE_Testing {
     }
 }
 /*
-
-
+References List
+Farrell, J., 2018. Java Programming. 9 ed. Boston: Cengage Learning.
+GeeksforGeeks, 2023. ArrayList get(index) Method in Java with Examples. [Online] 
+Available at: https://www.geeksforgeeks.org/arraylist-get-method-java-examples/
+[Accessed 25 June 2024].
+GeeksforGeeks, 2023. Removing Element from the Specified Index in Java ArrayList. [Online] 
+Available at: https://www.geeksforgeeks.org/removing-element-from-the-specified-index-in-java-arraylist/
+[Accessed 25 June 2024].
+GeeksforGeeks, 2023. String Arrays in Java. [Online] 
+Available at: https://www.geeksforgeeks.org/string-arrays-in-java/
+[Accessed 25 June 2024].
+GeeksforGeeks, 2023. StringBuilder append() Method in Java With Examples. [Online] 
+Available at: https://www.geeksforgeeks.org/stringbuilder-append-method-in-java-with-examples/
+[Accessed 25 June 2024].
+GeeksforGeeks, 2023. StringBuilder Class in Java with Examples. [Online] 
+Available at: https://www.geeksforgeeks.org/stringbuilder-class-in-java-with-examples/
+[Accessed 25 June 2024].
+GeeksforGeeks, 2024. ArrayList in Java. [Online] 
+Available at: https://www.geeksforgeeks.org/arraylist-in-java/?ref=ml_lbp
+[Accessed 25 June 2024].
 */
