@@ -368,6 +368,7 @@ public class POE_Part3 {
             
             if(taskNameArray.get(i).equalsIgnoreCase(taskName)){//(GeeksforGeeks, 2024)
                 
+                tasks.remove(i);
                 developerArray.remove(i);//Removes developer name at stored index(GeeksforGeeks, 2024)(GeeksforGeeks, 2023)
                 taskNameArray.remove(i);//Removes task name at stored index (GeeksforGeeks, 2024)(GeeksforGeeks, 2023)
                 taskIDArray.remove(i);//Removes task ID at stored index(GeeksforGeeks, 2024)(GeeksforGeeks, 2023)
