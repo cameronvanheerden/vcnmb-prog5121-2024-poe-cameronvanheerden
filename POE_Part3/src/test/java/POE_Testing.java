@@ -15,10 +15,10 @@ public class POE_Testing {
     @Test
     public void testDeveloperArray(){
         
-        assertEquals("Mike Smith", POE_Part3.developerArray.get(0));
-        assertEquals("Edward Harrison", POE_Part3.developerArray.get(1));
-        assertEquals("Samantha Paulson", POE_Part3.developerArray.get(2));
-        assertEquals("Glenda Oberholzer", POE_Part3.developerArray.get(3));
+        assertEquals("Mike Smith", POE_Part3.developerArray.get(0));// (GeeksforGeeks, 2023)
+        assertEquals("Edward Harrison", POE_Part3.developerArray.get(1));// (GeeksforGeeks, 2023)
+        assertEquals("Samantha Paulson", POE_Part3.developerArray.get(2));// (GeeksforGeeks, 2023)
+        assertEquals("Glenda Oberholzer", POE_Part3.developerArray.get(3));// (GeeksforGeeks, 2023)
         
     }
     
@@ -27,16 +27,16 @@ public class POE_Testing {
         
         int maxDurationIndex = 0;
         
-        for(int i = 1; i < POE_Part3.taskDurationArray.size(); i++){
+        for(int i = 1; i < POE_Part3.taskDurationArray.size(); i++){// (Farrell, 2018)
             
-            if(POE_Part3.taskDurationArray.get(i) > POE_Part3.taskDurationArray.get(maxDurationIndex)){
+            if(POE_Part3.taskDurationArray.get(i) > POE_Part3.taskDurationArray.get(maxDurationIndex)){// (GeeksforGeeks, 2023)
              
                 maxDurationIndex = i;
             }
         }
         
-        assertEquals("Glenda Oberholzer", POE_Part3.developerArray.get(maxDurationIndex));
-        assertEquals(11, (int )POE_Part3.taskDurationArray.get(maxDurationIndex));
+        assertEquals("Glenda Oberholzer", POE_Part3.developerArray.get(maxDurationIndex));// (GeeksforGeeks, 2023)
+        assertEquals(11, (int )POE_Part3.taskDurationArray.get(maxDurationIndex));// (GeeksforGeeks, 2023)
     }
     
     @Test
@@ -45,35 +45,35 @@ public class POE_Testing {
         String taskName = "Create Login";
         boolean found = false;
         
-        for(int i = 0; i < POE_Part3.taskNameArray.size(); i++){
+        for(int i = 0; i < POE_Part3.taskNameArray.size(); i++){// (Farrell, 2018)
             
-            if(POE_Part3.taskNameArray.get(i).equalsIgnoreCase(taskName)){
+            if(POE_Part3.taskNameArray.get(i).equalsIgnoreCase(taskName)){// (GeeksforGeeks, 2023)
                 
-               assertEquals("Mike Smith", POE_Part3.developerArray.get(i)); 
-               assertEquals("Create Login", POE_Part3.taskNameArray.get(i));
+               assertEquals("Mike Smith", POE_Part3.developerArray.get(i)); // (GeeksforGeeks, 2023)
+               assertEquals("Create Login", POE_Part3.taskNameArray.get(i));// (GeeksforGeeks, 2023)
                                
                 found = true;
                 break;
             }
          }
         
-        assertTrue(found);
+        assertTrue(found);// (Farrell, 2018)
     }
     
     @Test
     public void testTaskAssignedToDeveloper(){
         
         String developerName = "Samantha Paulson";
-        StringBuilder searchByDeveloper = new StringBuilder();
+        StringBuilder searchByDeveloper = new StringBuilder();//(GeeksforGeeks, 2023)
         
-        for(int i = 0; i < POE_Part3.developerArray.size(); i++){
+        for(int i = 0; i < POE_Part3.developerArray.size(); i++){// (Farrell, 2018)
             
-            if(POE_Part3.developerArray.get(i).equalsIgnoreCase(developerName)){
+            if(POE_Part3.developerArray.get(i).equalsIgnoreCase(developerName)){// (GeeksforGeeks, 2023)
                 
                 searchByDeveloper.append(POE_Part3.taskNameArray.get(i));
             }
         }
-        assertEquals("Create Reports", searchByDeveloper.toString());
+        assertEquals("Create Reports", searchByDeveloper.toString());// (Farrell, 2018)
     }
     
     @Test
@@ -82,44 +82,48 @@ public class POE_Testing {
         String taskName = "Create Reports";
         boolean found = false;
         
-        for(int i = 0; i < POE_Part3.taskNameArray.size(); i++){
+        for(int i = 0; i < POE_Part3.taskNameArray.size(); i++){// (Farrell, 2018)
             
-            if(POE_Part3.taskNameArray.get(i).equalsIgnoreCase(taskName)){
-                POE_Part3.developerArray.remove(i);
-                POE_Part3.taskNameArray.remove(i);
-                POE_Part3.taskIDArray.remove(i);
-                POE_Part3.taskDurationArray.remove(i);
-                POE_Part3.taskStatusArray.remove(i);
+            if(POE_Part3.taskNameArray.get(i).equalsIgnoreCase(taskName)){// (GeeksforGeeks, 2023)
+                POE_Part3.developerArray.remove(i);//(GeeksforGeeks, 2023)
+                POE_Part3.taskNameArray.remove(i);// (GeeksforGeeks, 2023)
+                POE_Part3.taskIDArray.remove(i);// (GeeksforGeeks, 2023)
+                POE_Part3.taskDurationArray.remove(i);// (GeeksforGeeks, 2023)
+                POE_Part3.taskStatusArray.remove(i);// (GeeksforGeeks, 2023)
                 found = true;
                 break;
             }
         }
-        assertTrue(found);
-        assertFalse(POE_Part3.taskNameArray.contains(taskName));
+        assertTrue(found);// (Farrell, 2018)
+        assertFalse(POE_Part3.taskNameArray.contains(taskName));// (Farrell, 2018)
     }
     
     @Test
     public void testDisplayFullReport(){
         
-        StringBuilder fullReport = new StringBuilder("Full details of all Tasks: \n\n");
+        StringBuilder fullReport = new StringBuilder("Full details of all Tasks: \n\n");//(GeeksforGeeks, 2023)
         
-        int arraySize = POE_Part3.developerArray.size();
+        int arraySize = POE_Part3.developerArray.size();// (Farrell, 2018)
         
-        assertEquals(arraySize, POE_Part3.taskNameArray.size());
-        assertEquals(arraySize, POE_Part3.developerArray.size());
-        assertEquals(arraySize, POE_Part3.taskDurationArray.size());
-        assertEquals(arraySize, POE_Part3.taskStatusArray.size());
-        assertEquals(arraySize, POE_Part3.taskIDArray.size());
+        assertEquals(arraySize, POE_Part3.taskNameArray.size());// (Farrell, 2018)
+        assertEquals(arraySize, POE_Part3.developerArray.size());// (Farrell, 2018)
+        assertEquals(arraySize, POE_Part3.taskDurationArray.size());// (Farrell, 2018)
+        assertEquals(arraySize, POE_Part3.taskStatusArray.size());// (Farrell, 2018)
+        assertEquals(arraySize, POE_Part3.taskIDArray.size());// (Farrell, 2018)
         
-        for(int i = 0; i < arraySize; i++){
+        for(int i = 0; i < arraySize; i++){// (Farrell, 2018)
             
-            fullReport.append("Task Name: ").append(POE_Part3.taskNameArray.get(i)).append("\n");
-            fullReport.append("Developer: ").append(POE_Part3.developerArray.get(i)).append("\n");
-            fullReport.append("Task Duration: ").append(POE_Part3.taskDurationArray.get(i)).append("\n");
-            fullReport.append("Task Status: ").append(POE_Part3.taskStatusArray.get(i)).append("\n");
-            fullReport.append("Task ID: ").append(POE_Part3.taskIDArray.get(i)).append("\n");
+            fullReport.append("Task Name: ").append(POE_Part3.taskNameArray.get(i)).append("\n");// (GeeksforGeeks, 2023)
+            fullReport.append("Developer: ").append(POE_Part3.developerArray.get(i)).append("\n");// (GeeksforGeeks, 2023)
+            fullReport.append("Task Duration: ").append(POE_Part3.taskDurationArray.get(i)).append("\n");// (GeeksforGeeks, 2023)
+            fullReport.append("Task Status: ").append(POE_Part3.taskStatusArray.get(i)).append("\n");// (GeeksforGeeks, 2023)
+            fullReport.append("Task ID: ").append(POE_Part3.taskIDArray.get(i)).append("\n");// (GeeksforGeeks, 2023)
         }
-        assertNotNull(fullReport.toString());
-        assertTrue(fullReport.length() > 0);
+        assertNotNull(fullReport.toString());// (Farrell, 2018)
+        assertTrue(fullReport.length() > 0);// (Farrell, 2018)
     }
 }
+/*
+
+
+*/
